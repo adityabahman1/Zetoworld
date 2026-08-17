@@ -1,14 +1,15 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import img from "../assets/ChatGPT Image Aug 17, 2026, 01_37_53 PM.png"
 
 export default function JoinCommunity() {
   return (
-    <section className="bg-[#F5F8FF] px-6 py-16">
+    <section className=" px-6 py-16">
       <div className="mx-auto max-w-6xl">
         <div className="relative overflow-hidden rounded-3xl shadow-xl">
           {/* Background photograph — swap src for the real community photo */}
           <img
-            src="/images/join-community.jpg"
+            src={img}
             alt="ZETO rider community standing with their electric scooters"
             className="h-[420px] w-full object-cover"
           />

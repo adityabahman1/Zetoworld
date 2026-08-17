@@ -1,7 +1,10 @@
-import React from "react";
+import { Smartphone, ListChecks, Wallet } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import img1 from "../assets/ChatGPT Image Aug 17, 2026, 12_50_24 PM.png"
 
 interface Step {
   number: number;
+  icon: LucideIcon;
   title: string;
   description: string;
 }
@@ -9,34 +12,38 @@ interface Step {
 const STEPS: Step[] = [
   {
     number: 1,
-    title: "Sign Up",
+    icon: Smartphone,
+    title: "Download & Sign Up",
     description:
-      "Complete a quick registration process with your basic details and valid driving license.",
+      "Get the Zeto app, create your account or log in, and complete a quick KYC with your basic details and valid driving license.",
   },
   {
     number: 2,
-    title: "Pick Your Scooter",
+    icon: ListChecks,
+    title: "Select Your Plan",
     description:
-      "Choose your preferred EV model and complete a brief orientation on operations and safety.",
+      "Browse available EV rental and battery-swap plans in the app, and pick the one that fits how much and how often you ride.",
   },
   {
     number: 3,
-    title: "Start Delivering",
+    icon: Wallet,
+    title: "Start Earning",
     description:
-      "Connect with our partner platforms, start accepting orders, and begin earning immediately.",
+      "Pick up your scooter, connect with partner delivery platforms, and start accepting orders — earnings track live in the app.",
   },
 ];
 
 export default function ProcessSteps() {
   return (
-    <section className="bg-[#EEF2F7] px-6 py-20">
+    <section className=" px-6 py-20">
       <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-2">
-        {/* Image placeholder — swap src for the EcoSwap station photograph */}
-        <div className="overflow-hidden rounded-3xl shadow-xl">
+        {/* Image placeholder — swap for a screenshot/mockup of the actual
+            Zeto app sign-up or plan-selection screen. */}
+        <div className="overflow-hidden rounded-2xl">
           <img
-            src="/images/ecoswap-station.jpg"
-            alt="Rider swapping a battery at an EcoSwap station"
-            className="aspect-[4/3] w-full object-cover"
+            src={img1}
+            alt="Zeto rider app sign-up and plan selection screens"
+            className=" w-full "
           />
         </div>
 
@@ -46,15 +53,19 @@ export default function ProcessSteps() {
             Simple 3-Step Process
           </h2>
           <p className="mt-4 max-w-md text-slate-500">
-            Getting started with Zeto is quick and hassle-free. Join us and
-            hit the road in no time.
+            Getting started with Zeto is quick and hassle-free — all from the
+            app. Sign up, pick your plan, and hit the road in no time.
           </p>
 
           <ol className="mt-10 space-y-8">
             {STEPS.map((step) => (
               <li key={step.number} className="flex gap-5">
-                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border-2 border-[#1FA24A] text-lg font-bold text-[#1FA24A]">
+                <div className="relative flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border-2 border-[#1FA24A] text-lg font-bold text-[#1FA24A]">
                   {step.number}
+                  <step.icon
+                    size={14}
+                    className="absolute -bottom-1 -right-1 rounded-full bg-[#1FA24A] p-0.5 text-white"
+                  />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-slate-900">
