@@ -1,5 +1,16 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, User, Building2, Hash, Loader2, CheckCircle2 } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  User,
+  Building2,
+  Hash,
+  Loader2,
+  CheckCircle2,
+  ArrowRight,
+  Sparkles,
+} from "lucide-react";
 
 const REASONS = ["Franchise", "Advertising", "Other"] as const;
 type Reason = (typeof REASONS)[number];
@@ -25,98 +36,262 @@ const INITIAL_FORM: FormState = {
 };
 
 const CONTACT_DETAILS = [
-  { icon: Phone, label: "Phone", value: "+91-8449595495" },
-  { icon: Mail, label: "Email", value: "info@zetoworld.com" },
-  { icon: MapPin, label: "Address", value: "Sector 70, Mohali - 160071" },
+  {
+    icon: Phone,
+    label: "Call us",
+    value: "+91 84495 95495",
+    href: "tel:+918449595495",
+  },
+  {
+    icon: Mail,
+    label: "Email us",
+    value: "info@zetoworld.com",
+    href: "mailto:info@zetoworld.com",
+  },
+  {
+    icon: MapPin,
+    label: "Visit us",
+    value: "Sector 70, Mohali - 160071",
+    href: "https://www.google.com/maps/search/?api=1&query=Sector+70+Mohali+160071",
+  },
 ];
 
-// Deploy the Apps Script Web App and paste its /exec URL here.
-const LEAD_ENDPOINT = "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec";
+const LEAD_ENDPOINT =
+  "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec";
 
-// Flat-style delivery-rider mascot, built entirely from SVG primitives — no
-// external image file needed, and it inherits currentColor so it always
-// matches the panel it sits on.
+const inputClass =
+  "w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-[#1FA24A] focus:bg-white focus:ring-2 focus:ring-[#1FA24A]/15";
+
 function RiderIllustration() {
   return (
     <svg
       viewBox="0 0 280 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-full max-w-[220px]"
+      className="w-full max-w-[230px]"
+      aria-hidden="true"
     >
-      {/* Ground shadow */}
-      <ellipse cx="140" cy="182" rx="90" ry="10" fill="#000000" fillOpacity="0.12" />
+      <ellipse
+        cx="140"
+        cy="182"
+        rx="90"
+        ry="10"
+        fill="#000"
+        fillOpacity="0.12"
+      />
 
-      {/* Scooter body */}
+      {/* Scooter */}
       <path
         d="M55 165c0-8 6-14 14-14h60l14-30h20l10 30h8c11 0 20 9 20 20 0 6-3 11-7 14H62c-4-4-7-11-7-14v-6z"
-        fill="#FFFFFF"
+        fill="#fff"
       />
-      <path d="M129 121h20l10 30h-38l8-30z" fill="#0B3D22" fillOpacity="0.15" />
+
+      <path
+        d="M129 121h20l10 30h-38l8-30z"
+        fill="#0B3D22"
+        fillOpacity="0.15"
+      />
 
       {/* Wheels */}
       <circle cx="82" cy="170" r="16" fill="#0B3D22" />
-      <circle cx="82" cy="170" r="7" fill="#FFFFFF" />
+      <circle cx="82" cy="170" r="7" fill="#fff" />
+
       <circle cx="192" cy="170" r="16" fill="#0B3D22" />
-      <circle cx="192" cy="170" r="7" fill="#FFFFFF" />
+      <circle cx="192" cy="170" r="7" fill="#fff" />
 
-      {/* Handlebar */}
-      <path d="M172 121l4-16" stroke="#0B3D22" strokeWidth="4" strokeLinecap="round" />
-      <path d="M164 105h24" stroke="#0B3D22" strokeWidth="4" strokeLinecap="round" />
-
-      {/* Delivery box */}
-      <rect x="40" y="118" width="34" height="30" rx="4" fill="#FFFFFF" fillOpacity="0.9" />
-      <rect x="40" y="118" width="34" height="8" rx="2" fill="#FFFFFF" />
-
-      {/* Rider legs */}
-      <path d="M118 152c4-10 10-18 16-22" stroke="#0B3D22" strokeWidth="7" strokeLinecap="round" />
-      <path d="M134 130c6 2 10 8 10 14" stroke="#0B3D22" strokeWidth="7" strokeLinecap="round" />
-
-      {/* Rider torso */}
+      {/* Handle */}
       <path
-        d="M118 96c0-9 7-16 16-16h4c9 0 16 7 16 16v24c0 6-5 11-11 11h-14c-6 0-11-5-11-11V96z"
-        fill="#FFFFFF"
+        d="M172 121l4-16"
+        stroke="#0B3D22"
+        strokeWidth="4"
+        strokeLinecap="round"
       />
 
-      {/* Rider arm to handlebar */}
-      <path d="M150 100l14 10" stroke="#FFFFFF" strokeWidth="7" strokeLinecap="round" />
+      <path
+        d="M164 105h24"
+        stroke="#0B3D22"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+
+      {/* Delivery box */}
+      <rect
+        x="40"
+        y="118"
+        width="34"
+        height="30"
+        rx="4"
+        fill="#fff"
+      />
+
+      <rect
+        x="40"
+        y="118"
+        width="34"
+        height="8"
+        rx="2"
+        fill="#E8F7ED"
+      />
+
+      {/* Rider legs */}
+      <path
+        d="M118 152c4-10 10-18 16-22"
+        stroke="#0B3D22"
+        strokeWidth="7"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M134 130c6 2 10 8 10 14"
+        stroke="#0B3D22"
+        strokeWidth="7"
+        strokeLinecap="round"
+      />
+
+      {/* Rider body */}
+      <path
+        d="M118 96c0-9 7-16 16-16h4c9 0 16 7 16 16v24c0 6-5 11-11 11h-14c-6 0-11-5-11-11V96z"
+        fill="#fff"
+      />
+
+      {/* Arm */}
+      <path
+        d="M150 100l14 10"
+        stroke="#fff"
+        strokeWidth="7"
+        strokeLinecap="round"
+      />
 
       {/* Helmet */}
       <circle cx="128" cy="72" r="16" fill="#0B3D22" />
-      <path d="M113 72a15 15 0 0 1 30 0" stroke="#FFFFFF" strokeWidth="2" strokeOpacity="0.4" />
-      <rect x="112" y="70" width="16" height="6" rx="3" fill="#FFFFFF" fillOpacity="0.9" />
 
-      {/* Little motion lines for a sense of speed */}
-      <path d="M18 100h24" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" strokeOpacity="0.7" />
-      <path d="M8 116h20" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" strokeOpacity="0.5" />
-      <path d="M20 132h16" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" strokeOpacity="0.35" />
+      <path
+        d="M113 72a15 15 0 0 1 30 0"
+        stroke="#fff"
+        strokeWidth="2"
+        strokeOpacity="0.4"
+      />
+
+      <rect
+        x="112"
+        y="70"
+        width="16"
+        height="6"
+        rx="3"
+        fill="#fff"
+        fillOpacity="0.9"
+      />
+
+      {/* Speed lines */}
+      <path
+        d="M18 100h24"
+        stroke="#fff"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeOpacity="0.7"
+      />
+
+      <path
+        d="M8 116h20"
+        stroke="#fff"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeOpacity="0.5"
+      />
+
+      <path
+        d="M20 132h16"
+        stroke="#fff"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeOpacity="0.35"
+      />
     </svg>
+  );
+}
+
+interface FieldProps {
+  label: string;
+  icon: React.ElementType;
+  children: React.ReactNode;
+}
+
+function Field({ label, icon: Icon, children }: FieldProps) {
+  return (
+    <div>
+      <label className="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-slate-700">
+        <Icon size={14} className="text-[#1FA24A]" />
+        {label}
+      </label>
+
+      {children}
+    </div>
   );
 }
 
 export default function GetInTouch() {
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+
   const [error, setError] = useState("");
 
-  function updateField<K extends keyof FormState>(key: K, value: FormState[K]) {
-    setForm((prev) => ({ ...prev, [key]: value }));
+  function updateField<K extends keyof FormState>(
+    key: K,
+    value: FormState[K]
+  ) {
+    setForm((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+
+    if (status === "error") {
+      setStatus("idle");
+      setError("");
+    }
   }
 
   function validate(): string | null {
-    if (!form.name.trim()) return "Please enter your name.";
-    if (!/^\d{10}$/.test(form.phone.trim())) return "Enter a valid 10-digit phone number.";
-    if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) return "Enter a valid email address.";
-    if (!form.reason) return "Select a reason for contacting us.";
-    if (!form.city.trim()) return "Please enter your city.";
-    if (!form.area.trim()) return "Please enter your area.";
-    if (!/^\d{6}$/.test(form.pincode.trim())) return "Enter a valid 6-digit pincode.";
+    if (!form.name.trim()) {
+      return "Please enter your full name.";
+    }
+
+    if (!/^\d{10}$/.test(form.phone.trim())) {
+      return "Please enter a valid 10-digit mobile number.";
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) {
+      return "Please enter a valid email address.";
+    }
+
+    if (!form.reason) {
+      return "Please select what you'd like to discuss.";
+    }
+
+    if (!form.city.trim()) {
+      return "Please enter your city.";
+    }
+
+    if (!form.area.trim()) {
+      return "Please enter your area.";
+    }
+
+    if (!/^\d{6}$/.test(form.pincode.trim())) {
+      return "Please enter a valid 6-digit pincode.";
+    }
+
     return null;
   }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    if (status === "submitting") return;
+
     const validationError = validate();
+
     if (validationError) {
       setError(validationError);
       setStatus("error");
@@ -130,141 +305,263 @@ export default function GetInTouch() {
       await fetch(LEAD_ENDPOINT, {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ ...form, submittedAt: new Date().toISOString() }),
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify({
+          ...form,
+          submittedAt: new Date().toISOString(),
+        }),
       });
+
       setStatus("success");
       setForm(INITIAL_FORM);
     } catch {
       setStatus("error");
-      setError("Something went wrong. Please try again in a moment.");
+      setError(
+        "We couldn't submit your request. Please try again in a moment."
+      );
     }
   }
 
   return (
-    <section className="bg-gradient-to-b from-[#F5F8FB] to-white px-6 py-20">
-      <div className="mx-auto max-w-xl text-center">
-        <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-          Get in Touch
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-gradient-to-b from-[#F5F8FB] via-white to-white px-6 py-20 sm:py-24"
+    >
+      {/* Background decoration */}
+      <div
+        className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-[#1FA24A]/5 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div
+        className="pointer-events-none absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-emerald-100/40 blur-3xl"
+        aria-hidden="true"
+      />
+
+      {/* Heading */}
+      <div className="relative mx-auto max-w-2xl text-center">
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#1FA24A]/20 bg-[#1FA24A]/5 px-3.5 py-1.5 text-xs font-semibold text-[#188A3E]">
+          <Sparkles size={13} />
+          Let's connect
+        </div>
+
+        <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Let's build something
+          <span className="text-[#1FA24A]"> greener.</span>
         </h2>
-        <p className="mt-4 text-slate-500">
-          Have questions or want to partner with us? Fill out the form below
-          and our team will get back to you shortly.
+
+        <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
+          Have a question, want to partner with us, or interested in bringing
+          Zeto to your city? Tell us a little about yourself.
         </p>
       </div>
 
-      <div className="mx-auto mt-12 grid max-w-5xl gap-8 overflow-hidden rounded-3xl bg-white shadow-xl shadow-slate-900/5 ring-1 ring-slate-100 lg:grid-cols-[minmax(0,280px)_1fr] lg:gap-0">
-        {/* Contact details + mascot — left panel */}
-        <div className="flex flex-col justify-between bg-gradient-to-b from-[#1FA24A] to-[#188A3E] px-8 py-10 sm:px-10 lg:py-12">
-          <div>
-            <p className="text-sm font-semibold text-white">
-              Tell us a bit about yourself
-            </p>
-            <p className="mt-0.5 text-xs text-emerald-50/90">
-              Takes less than a minute
-            </p>
+      {/* Main Card */}
+      <div className="relative mx-auto mt-12 max-w-6xl overflow-hidden rounded-[28px] border border-slate-100 bg-white shadow-[0_25px_80px_-30px_rgba(15,23,42,0.25)] lg:mt-14 lg:grid lg:grid-cols-[0.75fr_1.25fr]">
+        
+        {/* LEFT PANEL */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#1FA24A] via-[#188A3E] to-[#0B3D22] px-7 py-10 sm:px-10 sm:py-12">
+          <div
+            className="absolute -right-16 -top-16 h-48 w-48 rounded-full border border-white/10"
+            aria-hidden="true"
+          />
 
-            <div className="mt-10 space-y-6">
-              {CONTACT_DETAILS.map((item) => (
-                <div key={item.label} className="flex items-start gap-3">
-                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-white/15">
-                    <item.icon size={16} className="text-white" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium uppercase tracking-wide text-emerald-50/80">
-                      {item.label}
-                    </p>
-                    <p className="mt-0.5 text-sm font-medium text-white">
-                      {item.value}
-                    </p>
-                  </div>
-                </div>
-              ))}
+          <div
+            className="absolute -bottom-24 -left-20 h-56 w-56 rounded-full border border-white/10"
+            aria-hidden="true"
+          />
+
+          <div className="relative flex h-full flex-col">
+            <div>
+              <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-emerald-50">
+                Contact Zeto
+              </span>
+
+              <h3 className="mt-5 text-2xl font-bold leading-tight text-white">
+                We're here to
+                <br />
+                <span className="text-emerald-100">
+                  help you move forward.
+                </span>
+              </h3>
+
+              <p className="mt-4 max-w-xs text-sm leading-6 text-emerald-50/80">
+                Our team is ready to answer your questions and explore the
+                right opportunity for you.
+              </p>
             </div>
-          </div>
 
-          {/* Mascot — anchored to the bottom of the panel */}
-          <div className="mt-10 flex justify-center lg:mt-16">
-            <RiderIllustration />
+            {/* Contact Details */}
+            <div className="mt-9 space-y-3">
+              {CONTACT_DETAILS.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={
+                      item.href.startsWith("http")
+                        ? "_blank"
+                        : undefined
+                    }
+                    rel={
+                      item.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="group flex items-center gap-3.5 rounded-2xl border border-white/10 bg-white/5 p-3 transition hover:border-white/20 hover:bg-white/10"
+                  >
+                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-white/10 text-white transition group-hover:scale-105">
+                      <Icon size={17} />
+                    </span>
+
+                    <span className="min-w-0">
+                      <span className="block text-[10px] font-semibold uppercase tracking-wider text-emerald-100/70">
+                        {item.label}
+                      </span>
+
+                      <span className="mt-0.5 block truncate text-sm font-medium text-white">
+                        {item.value}
+                      </span>
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+
+            {/* Rider */}
+            <div className="mt-auto hidden justify-center pt-10 lg:flex">
+              <RiderIllustration />
+            </div>
           </div>
         </div>
 
-        {/* Form */}
-        <div className="p-8 sm:p-10">
+        {/* RIGHT FORM */}
+        <div className="p-7 sm:p-9 lg:p-10">
           {status === "success" ? (
-            <div className="flex flex-col items-center justify-center gap-3 py-10 text-center">
-              <CheckCircle2 size={44} className="text-[#1FA24A]" />
-              <h3 className="text-lg font-bold text-slate-900">Thanks — we got it!</h3>
-              <p className="max-w-xs text-sm text-slate-500">
-                Our team will reach out to you shortly. You'll also get a
-                confirmation email.
-              </p>
-              <button
-                onClick={() => setStatus("idle")}
-                className="mt-2 text-sm font-semibold text-[#1FA24A] hover:underline"
-              >
-                Submit another response
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-slate-700">
-                  <User size={14} /> Full name
-                </label>
-                <input
-                  type="text"
-                  value={form.name}
-                  onChange={(e) => updateField("name", e.target.value)}
-                  placeholder="Your full name"
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[#1FA24A] focus:ring-2 focus:ring-[#1FA24A]/20"
+            <div className="flex min-h-[450px] flex-col items-center justify-center text-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#1FA24A]/10">
+                <CheckCircle2
+                  size={34}
+                  className="text-[#1FA24A]"
                 />
               </div>
 
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label className="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-slate-700">
-                    <Phone size={14} /> Phone number
-                  </label>
-                  <input
-                    type="tel"
-                    value={form.phone}
-                    onChange={(e) => updateField("phone", e.target.value.replace(/\D/g, "").slice(0, 10))}
-                    placeholder="98765 43210"
-                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[#1FA24A] focus:ring-2 focus:ring-[#1FA24A]/20"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-slate-700">
-                    <Mail size={14} /> Email
-                  </label>
-                  <input
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => updateField("email", e.target.value)}
-                    placeholder="you@example.com"
-                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[#1FA24A] focus:ring-2 focus:ring-[#1FA24A]/20"
-                  />
-                </div>
+              <h3 className="mt-5 text-xl font-bold text-slate-900">
+                Thanks — we got it!
+              </h3>
+
+              <p className="mt-2 max-w-sm text-sm leading-6 text-slate-500">
+                Our team has received your enquiry and will get back to you
+                shortly.
+              </p>
+
+              <button
+                type="button"
+                onClick={() => setStatus("idle")}
+                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#1FA24A] hover:underline"
+              >
+                Submit another response
+                <ArrowRight size={14} />
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Header */}
+              <div className="mb-6">
+                <p className="text-xs font-semibold uppercase tracking-wider text-[#1FA24A]">
+                  Your details
+                </p>
+
+                <h3 className="mt-2 text-xl font-bold text-slate-900">
+                  Tell us how we can help
+                </h3>
+
+                <p className="mt-1.5 text-sm text-slate-500">
+                  Fill in your details and we'll get in touch.
+                </p>
               </div>
 
+              {/* Name */}
+              <Field label="Full name" icon={User}>
+                <input
+                  type="text"
+                  autoComplete="name"
+                  value={form.name}
+                  onChange={(e) =>
+                    updateField("name", e.target.value)
+                  }
+                  placeholder="Enter your full name"
+                  className={inputClass}
+                />
+              </Field>
+
+              {/* Phone + Email */}
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field label="Phone number" icon={Phone}>
+                  <div className="flex overflow-hidden rounded-xl border border-slate-200 bg-slate-50/50 transition focus-within:border-[#1FA24A] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1FA24A]/15">
+                    <span className="flex items-center border-r border-slate-200 px-3 text-sm text-slate-500">
+                      +91
+                    </span>
+
+                    <input
+                      type="tel"
+                      inputMode="numeric"
+                      autoComplete="tel"
+                      value={form.phone}
+                      onChange={(e) =>
+                        updateField(
+                          "phone",
+                          e.target.value
+                            .replace(/\D/g, "")
+                            .slice(0, 10)
+                        )
+                      }
+                      placeholder="98765 43210"
+                      className="min-w-0 flex-1 bg-transparent px-3 py-3 text-sm outline-none placeholder:text-slate-400"
+                    />
+                  </div>
+                </Field>
+
+                <Field label="Email address" icon={Mail}>
+                  <input
+                    type="email"
+                    autoComplete="email"
+                    value={form.email}
+                    onChange={(e) =>
+                      updateField("email", e.target.value)
+                    }
+                    placeholder="you@example.com"
+                    className={inputClass}
+                  />
+                </Field>
+              </div>
+
+              {/* Reason */}
               <div>
-                <span className="mb-2.5 block text-sm font-medium text-slate-700">
-                  Reason for contacting us
-                </span>
-                <div className="flex flex-wrap gap-2.5">
+                <label className="mb-2 block text-sm font-medium text-slate-700">
+                  What would you like to discuss?
+                </label>
+
+                <div className="flex flex-wrap gap-2">
                   {REASONS.map((reason) => {
                     const selected = form.reason === reason;
+
                     return (
                       <button
                         key={reason}
                         type="button"
-                        onClick={() => updateField("reason", reason)}
+                        onClick={() =>
+                          updateField("reason", reason)
+                        }
                         aria-pressed={selected}
                         className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
                           selected
                             ? "border-[#1FA24A] bg-[#1FA24A] text-white"
-                            : "border-slate-200 bg-white text-slate-600 hover:border-[#1FA24A]/50 hover:text-[#1FA24A]"
+                            : "border-slate-200 bg-white text-slate-600 hover:border-[#1FA24A] hover:text-[#1FA24A]"
                         }`}
                       >
                         {reason}
@@ -274,62 +571,92 @@ export default function GetInTouch() {
                 </div>
               </div>
 
-              <div className="grid gap-5 sm:grid-cols-3">
-                <div>
-                  <label className="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-slate-700">
-                    <Building2 size={14} /> City
-                  </label>
+              {/* Location */}
+              <div className="grid gap-4 sm:grid-cols-3">
+                <Field label="City" icon={Building2}>
                   <input
                     type="text"
+                    autoComplete="address-level2"
                     value={form.city}
-                    onChange={(e) => updateField("city", e.target.value)}
-                    placeholder="Bengaluru"
-                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[#1FA24A] focus:ring-2 focus:ring-[#1FA24A]/20"
+                    onChange={(e) =>
+                      updateField("city", e.target.value)
+                    }
+                    placeholder="Mohali"
+                    className={inputClass}
                   />
-                </div>
-                <div>
-                  <label className="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-slate-700">
-                    <MapPin size={14} /> Area
-                  </label>
+                </Field>
+
+                <Field label="Area" icon={MapPin}>
                   <input
                     type="text"
+                    autoComplete="address-line1"
                     value={form.area}
-                    onChange={(e) => updateField("area", e.target.value)}
-                    placeholder="Outer Ring Road"
-                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[#1FA24A] focus:ring-2 focus:ring-[#1FA24A]/20"
+                    onChange={(e) =>
+                      updateField("area", e.target.value)
+                    }
+                    placeholder="Sector 70"
+                    className={inputClass}
                   />
-                </div>
-                <div>
-                  <label className="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-slate-700">
-                    <Hash size={14} /> Pincode
-                  </label>
+                </Field>
+
+                <Field label="Pincode" icon={Hash}>
                   <input
                     type="text"
+                    inputMode="numeric"
+                    autoComplete="postal-code"
                     value={form.pincode}
-                    onChange={(e) => updateField("pincode", e.target.value.replace(/\D/g, "").slice(0, 6))}
-                    placeholder="560103"
-                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-[#1FA24A] focus:ring-2 focus:ring-[#1FA24A]/20"
+                    onChange={(e) =>
+                      updateField(
+                        "pincode",
+                        e.target.value
+                          .replace(/\D/g, "")
+                          .slice(0, 6)
+                      )
+                    }
+                    placeholder="160071"
+                    className={inputClass}
                   />
-                </div>
+                </Field>
               </div>
 
+              {/* Error */}
               {status === "error" && error && (
-                <p className="text-sm font-medium text-red-600">{error}</p>
+                <div
+                  role="alert"
+                  className="rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm font-medium text-red-600"
+                >
+                  {error}
+                </div>
               )}
 
+              {/* Submit */}
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-[#1FA24A] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#188A3E] disabled:cursor-not-allowed disabled:opacity-70"
+                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#1FA24A] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#1FA24A]/20 transition hover:-translate-y-0.5 hover:bg-[#188A3E] hover:shadow-xl disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-70"
               >
                 {status === "submitting" ? (
                   <>
-                    <Loader2 size={16} className="animate-spin" /> Submitting...
+                    <Loader2
+                      size={16}
+                      className="animate-spin"
+                    />
+                    Sending your request...
                   </>
                 ) : (
-                  "Submit"
+                  <>
+                    Send enquiry
+                    <ArrowRight
+                      size={16}
+                      className="transition-transform group-hover:translate-x-1"
+                    />
+                  </>
                 )}
               </button>
+
+              <p className="text-center text-[11px] leading-5 text-slate-400">
+                We'll only use your details to respond to your enquiry.
+              </p>
             </form>
           )}
         </div>

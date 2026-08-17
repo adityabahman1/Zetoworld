@@ -15,7 +15,7 @@ const NAV_LINKS: NavLink[] = [
 ];
 
 const PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.zetoworld";
+  "https://play.google.com/store/apps/details?id=com.zeto.pilot&hl=en_IN";
 
 export default function Header() {
   const [active, setActive] = useState("Home");

@@ -1,24 +1,13 @@
-
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Partners from "./components/Partners";
-import WhyChooseZeto from "./components/WhyChooseZeto";
-import ProcessSteps from "./components/ProcessSteps";
-import JoinCommunity from "./components/JoinCommunity";
-import GetInTouch from "./components/GetInTouch";
-import Footer from "./components/Footer";
+// src/App.tsx
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white font-sans">
-      <Header />
-      <Hero />
-      <WhyChooseZeto />
-      <ProcessSteps />
-      <JoinCommunity />
-      <Partners />
-      <GetInTouch />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
