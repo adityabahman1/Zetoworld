@@ -34,7 +34,7 @@ useEffect(() => {
 
   return (
 <header
-  className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
+  className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 rounded-b-4xl ${
     scrolled
       ? "bg-white shadow-md py-0"
       : "bg-transparent py-0"
