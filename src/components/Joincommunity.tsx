@@ -1,4 +1,4 @@
-import React from "react";
+
 import { ArrowRight } from "lucide-react";
 import img from "../assets/ChatGPT Image Aug 17, 2026, 01_37_53 PM.png"
 
