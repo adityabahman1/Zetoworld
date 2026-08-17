@@ -15,7 +15,7 @@ const HIGHLIGHTS: Highlight[] = [
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-[#fcfdfa] via-[#f2f7ec] to-[#D3E8BC] lg:min-h-[600px]">
+    <section className="relative overflow-hidden pt-24 bg-gradient-to-r from-[#fcfdfa] via-[#f2f7ec] to-[#D3E8BC] lg:min-h-[600px]">
       {/* Bottom fade-to-white — sits on top of the horizontal gradient and
           blends the section's bottom edge into pure white regardless of how
           green that edge is horizontally, so it merges seamlessly into the
@@ -24,7 +24,7 @@ export default function Hero() {
 
       {/* Desktop/tablet image — pulled in from the right edge, sitting
           closer to the text block, cropped toward the left of its box. */}
-      <div className="pointer-events-none absolute inset-y-0 right-24 hidden w-[40%] items-center p-10 lg:flex xl:right-40 xl:p-14">
+      <div className="pointer-events-none absolute inset-y-0 right-24 hidden w-[41%] items-center p-10 lg:flex xl:right-40 xl:p-14">
         <img
           src={img1}
           alt="Zeto delivery rider on an electric scooter"
@@ -33,7 +33,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-12 sm:px-10 sm:py-16 lg:py-24">
-        <div className="max-w-md lg:pl-4 xl:pl-6">
+        <div className="max-w-md lg:pl-8 xl:pl-6">
           <h1 className="text-3xl font-extrabold leading-[1.15] text-[#0B3D22] sm:text-4xl lg:text-5xl">
             Cutting Emission
             <br />
