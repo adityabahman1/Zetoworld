@@ -11,13 +11,13 @@ import Footer from "../components/Footer";
 export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans">
-      <Header />
+      <Header variant="light" />
       <Hero />
       <WhyChooseZeto />
       <ProcessSteps />
       <JoinCommunity />
       <Partners />
-      <GetInTouch />
+      <GetInTouch pageType="home" />
       <Footer />
     </div>
   );
