@@ -28,7 +28,7 @@ const NAV_LINKS: NavLink[] = [
   { label: "Pricing", href: "pricing", type: "scroll" },
   { label: "Franchise", href: "franchise", type: "scroll" },
   { label: "Advertising", href: "/advertising", type: "route" },
-  { label: "Contact", href: "contact", type: "scroll" },
+  { label: "Contact", href: "/contact", type: "route" },
 ];
 
 const PLAY_STORE_URL =
@@ -41,8 +41,12 @@ export default function Header({ variant = "dark" }: HeaderProps) {
   const isHome = location.pathname === "/";
 
   const [active, setActive] = useState(
-    location.pathname === "/advertising" ? "Advertising" : "Home"
-  );
+  location.pathname === "/advertising"
+    ? "Advertising"
+    : location.pathname === "/contact"
+    ? "Contact"
+    : "Home"
+);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -61,12 +65,14 @@ export default function Header({ variant = "dark" }: HeaderProps) {
   // Keep the highlighted link in sync with the route itself — covers
   // landing directly on /advertising, using the back button, etc.
   useEffect(() => {
-    if (location.pathname === "/advertising") {
-      setActive("Advertising");
-    } else if (!location.state?.scrollTo) {
-      setActive("Home");
-    }
-  }, [location.pathname]);
+  if (location.pathname === "/advertising") {
+    setActive("Advertising");
+  } else if (location.pathname === "/contact") {
+    setActive("Contact");
+  } else if (!location.state?.scrollTo) {
+    setActive("Home");
+  }
+}, [location.pathname]);
 
   // If we navigated here from another page with a section to scroll to
   // (see handleNavClick below), do that scroll once this page has mounted.

@@ -16,12 +16,13 @@ import {
 /* Reasons — now depend on which page the form is embedded in                 */
 /* -------------------------------------------------------------------------- */
 
-type PageType = "home" | "franchise" | "advertising";
+type PageType = "home" | "franchise" | "advertising" | "contact";
 
 const REASONS_BY_PAGE: Record<PageType, readonly string[]> = {
   home: ["Join as Zeto Rider"],
   franchise: ["Start a Franchise", "Investment Opportunity", "Fleet Partnership"],
   advertising: ["Vehicle Branding", "Digital Ad Campaign", "Sponsorship"],
+  contact :[    "General Inquiry",     "Join as Zeto Rider",    "Start a Franchise",     "Advertising",    "Support"]
 };
 
 interface FormState {
