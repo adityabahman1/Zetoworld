@@ -1,6 +1,6 @@
-// Advertising.tsx — no highlights row, no CTA, just title/description/image
+// Fofo.tsx — no highlights row, no CTA, just title/description/image
 import HeroCommon from "../components/HeroCommon";
-import adImg from "../assets/ChatGPT Image Aug 18, 2026, 01_15_17 PM.png";
+import adImg from "../assets/ChatGPT Image Aug 19, 2026, 02_19_40 PM.png";
 import Header from "../components/Header"
 import Footer from "../components/Footer";
 import GetInTouch from "../components/Getintouch";
@@ -12,11 +12,11 @@ export function Fofo() {
     <div>
     <Header variant="dark"/>
     <HeroCommon
-      title="Reach Riders,"
-      highlight="Reach Cities"
-      description="Advertise on Zeto's fleet and put your brand in front of thousands daily."
+      title="You Own It,"
+      highlight="You Run It"
+      description="Partner with Zeto through the FOFO model — you own and operate the business, Zeto equips you with playbook, training, and brand behind it."
       heroImage={adImg}
-      heroImageAlt="Branded Zeto scooter fleet"
+      heroImageAlt="Zeto franchise owner running their site"
     />
     <FofoBenefitCards/>
     <FofoControlPanel/>

@@ -1,6 +1,6 @@
 // Advertising.tsx — no highlights row, no CTA, just title/description/image
 import HeroCommon from "../components/HeroCommon";
-import adImg from "../assets/ChatGPT Image Aug 19, 2026, 01_15_51 PM.png";
+import adImg from "../assets/ChatGPT Image Aug 19, 2026, 02_15_20 PM.png";
 import Header from "../components/Header"
 import Footer from "../components/Footer";
 import GetInTouch from "../components/Getintouch";
