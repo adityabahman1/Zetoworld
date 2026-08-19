@@ -42,8 +42,8 @@ const NAV_LINKS: NavLink[] = [
   },
   {
     label: "Pricing",
-    href: "pricing",
-    type: "scroll",
+    href: "/pricing",
+    type: "route",
   },
   {
     label: "Franchise",
@@ -113,6 +113,10 @@ export default function Header({
   */
 
   const getActiveLink = (): string => {
+    if (location.pathname === "/pricing") {
+      return "Pricing";
+    }
+
     if (location.pathname === "/advertising") {
       return "Advertising";
     }

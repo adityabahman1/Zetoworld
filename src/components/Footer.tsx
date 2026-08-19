@@ -1,6 +1,12 @@
+import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
 
-interface FooterLink {
+interface RouteLink {
+  label: string;
+  to: string;
+}
+
+interface AnchorLink {
   label: string;
   href: string;
 }
@@ -11,23 +17,37 @@ interface SocialLink {
   label: string;
 }
 
-const COMPANY_LINKS: FooterLink[] = [
-  { label: "Home", href: "#home" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Franchise", href: "#franchise" },
-  { label: "Advertising", href: "#advertising" },
+/**
+ * Company links now point at real routes (matching App.tsx / Header.tsx)
+ * instead of same-page hash anchors. Franchise is split into FOCO/FOFO
+ * since the footer has no room for Header's hover dropdown.
+ */
+const COMPANY_LINKS: RouteLink[] = [
+  { label: "Home", to: "/" },
+  { label: "Pricing", to: "/pricing" },
+  { label: "FOCO Franchise", to: "/foco" },
+  { label: "FOFO Franchise", to: "/fofo" },
+  { label: "Advertising", to: "/advertising" },
 ];
 
-const LEGAL_LINKS: FooterLink[] = [
+/**
+ * No dedicated pages/routes exist yet for these — left as in-page
+ * anchors until real routes are added.
+ */
+const LEGAL_LINKS: AnchorLink[] = [
   { label: "Privacy Policy", href: "#privacy" },
   { label: "Terms of Service", href: "#terms" },
 ];
 
-const SUPPORT_LINKS: FooterLink[] = [
+const SUPPORT_LINKS: (RouteLink | AnchorLink)[] = [
   { label: "FAQ", href: "#faq" },
   { label: "Support", href: "#support" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", to: "/contact" },
 ];
+
+function isRouteLink(link: RouteLink | AnchorLink): link is RouteLink {
+  return (link as RouteLink).to !== undefined;
+}
 
 const SOCIAL_LINKS: SocialLink[] = [
   {
@@ -131,11 +151,11 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-1">
+            <Link to="/" className="flex items-center gap-1">
               <span className="text-3xl font-bold tracking-tight text-[#1d7239]">
                 zeto
               </span>
-            </div>
+            </Link>
 
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-800">
               Cutting Emission, Creating Jobs. Join the green revolution in
@@ -195,12 +215,12 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               {COMPANY_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.to}
                     className="text-sm text-slate-800 transition-colors hover:text-[#1FA24A]"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -235,12 +255,21 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               {SUPPORT_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-slate-800 transition-colors hover:text-[#1FA24A]"
-                  >
-                    {link.label}
-                  </a>
+                  {isRouteLink(link) ? (
+                    <Link
+                      to={link.to}
+                      className="text-sm text-slate-800 transition-colors hover:text-[#1FA24A]"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-sm text-slate-800 transition-colors hover:text-[#1FA24A]"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

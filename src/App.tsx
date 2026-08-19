@@ -5,6 +5,7 @@ import Advertising from "./pages/Advertising";
 import Contact from "./pages/Contact";
 import Foco from "./pages/Foco";
 import Fofo from "./pages/Fofo";
+import Pricing from "./pages/Pricing";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/foco" element={<Foco />} />
         <Route path="/fofo" element={<Fofo />} />
+        <Route path="/pricing" element={<Pricing />} />
       </Routes>
     </BrowserRouter>
   );
