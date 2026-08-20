@@ -41,8 +41,8 @@ const NAV_LINKS: NavLink[] = [
     type: "scroll",
   },
   {
-    label: "Pricing",
-    href: "/pricing",
+    label: "Battery",
+    href: "/battery",
     type: "route",
   },
   {
@@ -113,8 +113,8 @@ export default function Header({
   */
 
   const getActiveLink = (): string => {
-    if (location.pathname === "/pricing") {
-      return "Pricing";
+    if (location.pathname === "/battery") {
+      return "Battery";
     }
 
     if (location.pathname === "/advertising") {
