@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Zap,
   BatteryFull,
@@ -166,7 +166,20 @@ export default function ZetoBatterySwapStation() {
         </div>
       </section>
 
-
+      {/* ---------------- BENEFITS ---------------- */}
+      <section>
+        <div className="max-w-[72rem] pl-8 md:pl-16 pr-6 md:pr-10 py-14 grid gap-10 md:grid-cols-3">
+          {BENEFITS.map(({ icon: Icon, title, body }) => (
+            <div key={title} className="flex flex-col gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--zeto-surface-2)]">
+                <Icon size={18} className="text-[var(--zeto-primary)]" />
+              </div>
+              <h3 className="zeto-display text-lg text-[var(--zeto-ink)]">{title}</h3>
+              <p className="text-sm leading-relaxed text-[var(--zeto-ink-dim)]">{body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
