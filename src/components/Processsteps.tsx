@@ -13,9 +13,9 @@ const STEPS: Step[] = [
   {
     number: 1,
     icon: Smartphone,
-    title: "Download & Sign Up",
+    title: "Download Zeto Pilot App",
     description:
-      "Get the Zeto app, create your account or log in, and complete a quick KYC with your basic details and valid driving license.",
+      "Get the Zeto Pilot app, create your account or log in, and complete a quick KYC with your basic details and valid driving license.",
   },
   {
     number: 2,

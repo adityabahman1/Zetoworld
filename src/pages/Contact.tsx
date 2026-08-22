@@ -4,7 +4,7 @@ import HeroCommon from "../components/HeroCommon";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import GetInTouch from "../components/Getintouch";
-import adImg from "../assets/ChatGPT Image Aug 17, 2026, 12_57_25 PM.png";
+import adImg from "../assets/ChatGPT Image Aug 22, 2026, 03_36_09 PM.png";
 
 export function Contact() {
   return (
