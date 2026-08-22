@@ -1,8 +1,10 @@
-
 import { ArrowRight } from "lucide-react";
-import img from "../assets/ChatGPT Image Aug 17, 2026, 01_37_53 PM.png"
+import { useNavigate } from "react-router-dom";
+import img from "../assets/ChatGPT Image Aug 17, 2026, 01_37_53 PM.png";
 
 export default function JoinCommunity() {
+  const navigate = useNavigate();
+
   return (
     <section className=" px-6 py-16">
       <div className="mx-auto max-w-6xl">
@@ -28,7 +30,10 @@ export default function JoinCommunity() {
               change towards a sustainable future while building a secure
               livelihood.
             </p>
-            <button className="mt-2 flex w-fit items-center gap-2 rounded-full bg-[#0B6E3B] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-[#0A5E32]">
+            <button
+              onClick={() => navigate("/contact")}
+              className="mt-2 flex w-fit items-center gap-2 rounded-full bg-[#0B6E3B] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-[#0A5E32]"
+            >
               Join the Revolution
               <ArrowRight size={16} />
             </button>
