@@ -16,7 +16,7 @@ export default function Home() {
       <HeroCommon
           title="Cutting Emission"
           highlight="Creating Jobs"
-          description="Zeto is building a sustainable delivery ecosystem that reduces pollution and empowers communities with meaningful job opportunities."
+          description="ZETO is building a sustainable delivery ecosystem that reduces pollution and empowers communities with meaningful job opportunities."
           heroImage={img} 
           heroImageAlt="Zeto franchise owner running their site"
         />

@@ -21,15 +21,25 @@ type PageType = "home" | "franchise" | "advertising" | "contact";
 const REASONS_BY_PAGE: Record<PageType, readonly string[]> = {
   home: ["Join as Zeto Rider"],
   franchise: ["Start a Franchise", "Investment Opportunity", "Fleet Partnership"],
-  advertising: ["Vehicle Branding", "Digital Ad Campaign", "Sponsorship"],
-  contact :[    "General Inquiry",     "Join as Zeto Rider",    "Start a Franchise",     "Advertising",    "Support"]
+advertising: [
+  "Scooter Branding",
+  "Helmet Branding",
+],  contact :[    "General Inquiry",     "Join as Zeto Rider",    "Start a Franchise",     "Advertising",    "Support"]
 };
+
+const FLEET_SIZE_OPTIONS = [
+  "Less than 10 Scooters",
+  "10 - 50 Scooters",
+  "50 - 100 Scooters",
+  "More than 100 Scooters",
+] as const;
 
 interface FormState {
   name: string;
   phone: string;
   email: string;
   reason: string | null;
+  fleetSize: string;
   city: string;
   area: string;
   pincode: string;
@@ -41,6 +51,7 @@ function initialForm(reason: string | null = null): FormState {
     phone: "",
     email: "",
     reason,
+    fleetSize: "",
     city: "",
     area: "",
     pincode: "",
@@ -188,8 +199,13 @@ export default function GetInTouch({ pageType = "home" }: GetInTouchProps) {
     if (!form.name.trim()) return "Please enter your full name.";
     if (!/^\d{10}$/.test(form.phone.trim())) return "Please enter a valid 10-digit mobile number.";
     if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) return "Please enter a valid email address.";
-    if (!form.reason) return "Please select what you'd like to discuss.";
-    if (!form.city.trim()) return "Please enter your city.";
+if (pageType === "franchise") {
+  if (!form.fleetSize)
+    return "Please select the number of scooters.";
+} else {
+  if (!form.reason)
+    return "Please select what you'd like to discuss.";
+}    if (!form.city.trim()) return "Please enter your city.";
     if (!form.area.trim()) return "Please enter your area.";
     if (!/^\d{6}$/.test(form.pincode.trim())) return "Please enter a valid 6-digit pincode.";
     return null;
@@ -407,35 +423,55 @@ export default function GetInTouch({ pageType = "home" }: GetInTouchProps) {
                   Home offers just one ("Join as Zeto Rider"), auto-selected
                   and shown disabled so the person still sees what they're
                   submitting for without needing to click it. */}
-              <div>
-                <label className="mb-2 block text-sm font-medium text-slate-700">
-                  What would you like to discuss?
-                  <span className="ml-1 text-[#1FA24A]">*</span>
-                </label>
 
-                <div className="flex flex-wrap gap-2">
-                  {reasons.map((reason) => {
-                    const selected = form.reason === reason;
+                  {pageType === "franchise" ? (
+  <Field label="Number of Scooters" icon={Building2}>
+    <select
+      value={form.fleetSize}
+      onChange={(e) => updateField("fleetSize", e.target.value)}
+      className={inputClass}
+    >
+      <option value="">Select number of scooters</option>
 
-                    return (
-                      <button
-                        key={reason}
-                        type="button"
-                        onClick={() => updateField("reason", reason)}
-                        aria-pressed={selected}
-                        disabled={isSingleReason}
-                        className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
-                          selected
-                            ? "border-[#1FA24A] bg-[#1FA24A] text-white"
-                            : "border-slate-200 bg-white text-slate-600 hover:border-[#1FA24A] hover:text-[#1FA24A]"
-                        } ${isSingleReason ? "cursor-default" : ""}`}
-                      >
-                        {reason}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
+      {FLEET_SIZE_OPTIONS.map((option) => (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      ))}
+    </select>
+  </Field>
+) : (
+  <div>
+    <label className="mb-2 block text-sm font-medium text-slate-700">
+      What would you like to discuss?
+      <span className="ml-1 text-[#1FA24A]">*</span>
+    </label>
+
+    <div className="flex flex-wrap gap-2">
+      {reasons.map((reason) => {
+        const selected = form.reason === reason;
+
+        return (
+          <button
+            key={reason}
+            type="button"
+            onClick={() => updateField("reason", reason)}
+            aria-pressed={selected}
+            disabled={isSingleReason}
+            className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
+              selected
+                ? "border-[#1FA24A] bg-[#1FA24A] text-white"
+                : "border-slate-200 bg-white text-slate-600 hover:border-[#1FA24A] hover:text-[#1FA24A]"
+            } ${isSingleReason ? "cursor-default" : ""}`}
+          >
+            {reason}
+          </button>
+        );
+      })}
+    </div>
+  </div>
+)}
+              
 
               <div className="grid gap-5 sm:grid-cols-3">
                 <Field label="City" icon={Building2}>

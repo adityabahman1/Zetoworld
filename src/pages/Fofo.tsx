@@ -1,6 +1,6 @@
 // Fofo.tsx — no highlights row, no CTA, just title/description/image
 import HeroCommon from "../components/HeroCommon";
-import adImg from "../assets/ChatGPT Image Aug 19, 2026, 02_19_40 PM.png";
+import adImg from "../assets/ChatGPT Image Aug 24, 2026, 11_19_21 AM.png"
 import Header from "../components/Header"
 import Footer from "../components/Footer";
 import GetInTouch from "../components/Getintouch";
@@ -12,9 +12,9 @@ export function Fofo() {
     <div>
     <Header variant="dark"/>
     <HeroCommon
-      title="You Own It,"
-      highlight="You Run It"
-      description="Partner with Zeto through the FOFO model — you own and operate the business, Zeto equips you with playbook, training, and brand behind it."
+      title="Own & Operate "
+      highlight="Your EV Dealership"
+      description="Partner with ZETO through the FOFO model — you own and operate the business, Zeto equips you with playbook, training, and brand behind it."
       heroImage={adImg}
       heroImageAlt="Zeto franchise owner running their site"
     />

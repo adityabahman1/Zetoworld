@@ -1,6 +1,6 @@
 // Advertising.tsx — no highlights row, no CTA, just title/description/image
 import HeroCommon from "../components/HeroCommon";
-import adImg from "../assets/ChatGPT Image Aug 19, 2026, 02_15_20 PM.png";
+import adImg from "../assets/ChatGPT Image Aug 24, 2026, 01_41_05 PM.png";
 import Header from "../components/Header"
 import Footer from "../components/Footer";
 import GetInTouch from "../components/Getintouch";
@@ -12,9 +12,9 @@ export function Advertising() {
     <div>
     <Header variant="dark"/>
     <HeroCommon
-      title="You Invest,"
-      highlight="We Operate"
-      description="Partner with Zeto through the FOCO model — you bring the capital and the site, we bring the staff, systems, and day-to-day running."
+      title="EV Franchise Business in"
+      highlight="Your City"
+      description="Partner with ZETO through the FOCO model — you bring the capital and the site, we bring the staff, systems, and day-to-day running."
       heroImage={adImg}
       heroImageAlt="Branded Zeto scooter fleet"
     />

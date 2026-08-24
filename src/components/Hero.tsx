@@ -15,7 +15,7 @@ const HIGHLIGHTS: Highlight[] = [
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-24 bg-gradient-to-r from-[#fcfdfa] via-[#f2f7ec] to-[#D3E8BC] lg:min-h-[600px]">
+      <section className="relative overflow-hidden pt-24 bg-gradient-to-r from-[#fcfdfa] via-[#f2f7ec] to-[#D3E8BC] lg:min-h-[600px]">
       {/* Bottom fade-to-white — sits on top of the horizontal gradient and
           blends the section's bottom edge into pure white regardless of how
           green that edge is horizontally, so it merges seamlessly into the
