@@ -1,4 +1,3 @@
-import React from "react";
 
 type IconProps = {
   size?: number;
@@ -74,12 +73,7 @@ const problems = [
 
 const zones = ["Restaurants", "Offices", "Markets", "Residential", "Universities", "IT Parks", "Airports", "Metro Stations"];
 
-const benefits = [
-  { icon: Icon.Eye, title: "High Visibility", text: "Everywhere" },
-  { icon: Icon.Users, title: "Targeted", text: "Local Audience" },
-  { icon: Icon.Leaf, title: "Eco-Friendly", text: "Branding" },
-  { icon: Icon.Chart, title: "Cost-Effective", text: "High ROI" },
-];
+
 
 export default function ZetoMovingBillboardsSection() {
   return (

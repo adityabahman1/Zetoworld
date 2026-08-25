@@ -4,7 +4,6 @@ import adImg from "../assets/ChatGPT Image Aug 18, 2026, 01_15_17 PM.png";
 import Header from "../components/Header"
 import AdShowcase from "../components/Adshowcase";
 import Footer from "../components/Footer";
-import AdHotspotDiagram from "../components/Adhotspotdiagram";
 import GetInTouch from "../components/Getintouch";
 import ZetoMovingBillboardsSection from "../components/ZetoMovingBillboardsSection";
 import WhyScooterAdvertisingWins from "../components/WhyScooterAdvertisingWins";

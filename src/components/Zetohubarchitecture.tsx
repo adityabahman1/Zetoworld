@@ -1,4 +1,4 @@
-import React from "react";
+
 import img from "../assets/WhatsApp Image 2026-08-24 at 10.27.45 PM.jpeg"
 
 type IconProps = {
