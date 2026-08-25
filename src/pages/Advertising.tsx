@@ -6,6 +6,9 @@ import AdShowcase from "../components/Adshowcase";
 import Footer from "../components/Footer";
 import AdHotspotDiagram from "../components/Adhotspotdiagram";
 import GetInTouch from "../components/Getintouch";
+import ZetoMovingBillboardsSection from "../components/ZetoMovingBillboardsSection";
+import WhyScooterAdvertisingWins from "../components/WhyScooterAdvertisingWins";
+import Brandingpricing from "../components/Brandingpricing";
 
 export function Advertising() {
   return (
@@ -19,7 +22,9 @@ export function Advertising() {
       heroImageAlt="Branded Zeto scooter fleet"
     />
     <AdShowcase/>
-    <AdHotspotDiagram/>
+    <ZetoMovingBillboardsSection/>
+    <WhyScooterAdvertisingWins/>
+    <Brandingpricing/>
     <GetInTouch pageType="advertising"/>
     <Footer/>
     </div>
