@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   ArrowRight,
   Sparkles,
+  Banknote,
 } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
@@ -40,6 +41,7 @@ interface FormState {
   email: string;
   reason: string | null;
   fleetSize: string;
+  minBudget: string;
   city: string;
   area: string;
   pincode: string;
@@ -52,6 +54,7 @@ function initialForm(reason: string | null = null): FormState {
     email: "",
     reason,
     fleetSize: "",
+    minBudget: "",
     city: "",
     area: "",
     pincode: "",
@@ -202,6 +205,8 @@ export default function GetInTouch({ pageType = "home" }: GetInTouchProps) {
 if (pageType === "franchise") {
   if (!form.fleetSize)
     return "Please select the number of scooters.";
+  if (!form.minBudget.trim())
+    return "Please enter your minimum budget.";
 } else {
   if (!form.reason)
     return "Please select what you'd like to discuss.";
@@ -425,21 +430,34 @@ if (pageType === "franchise") {
                   submitting for without needing to click it. */}
 
                   {pageType === "franchise" ? (
-  <Field label="Number of Scooters" icon={Building2}>
-    <select
-      value={form.fleetSize}
-      onChange={(e) => updateField("fleetSize", e.target.value)}
-      className={inputClass}
-    >
-      <option value="">Select number of scooters</option>
+  <div className="grid gap-5 sm:grid-cols-2">
+    <Field label="Number of Scooters" icon={Building2}>
+      <select
+        value={form.fleetSize}
+        onChange={(e) => updateField("fleetSize", e.target.value)}
+        className={inputClass}
+      >
+        <option value="">Select number of scooters</option>
 
-      {FLEET_SIZE_OPTIONS.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
-  </Field>
+        {FLEET_SIZE_OPTIONS.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </Field>
+
+    <Field label="Minimum Budget" icon={Banknote}>
+      <input
+        type="text"
+        inputMode="numeric"
+        value={form.minBudget}
+        onChange={(e) => updateField("minBudget", e.target.value)}
+        placeholder="e.g. ₹4,00,000"
+        className={inputClass}
+      />
+    </Field>
+  </div>
 ) : (
   <div>
     <label className="mb-2 block text-sm font-medium text-slate-700">

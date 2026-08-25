@@ -71,7 +71,7 @@ export default function WhyChooseZetoFoco() {
       <div
         className="
           mx-auto
-          max-w-7xl
+          max-w-5xl
         "
       >
         {/* =====================================================
