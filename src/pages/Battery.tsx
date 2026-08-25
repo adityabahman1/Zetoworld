@@ -8,6 +8,8 @@ import adImg from "../assets/ChatGPT Image Aug 17, 2026, 12_57_25 PM.png";
 import SwapStationJourney from "../components/Swapstationjourney";
 import ZetoBatterySwapStation from "../components/Zetobatteryswapstation";
 import SwapStationFeatures from "../components/Swapstationfeatures";
+import SwappableBattery from "../components/SwappableBattery";
+import Swapstation from "../components/Swapstation";
 
 export function Battery() {
   return (
@@ -21,6 +23,8 @@ export function Battery() {
         heroImageAlt="Zeto battery swapping station"
       />
       <ZetoBatterySwapStation/>
+      <Swapstation/>
+      <SwappableBattery/>
       <SwapStationJourney/>
       <SwapStationFeatures/>
       <GetInTouch pageType="contact" />

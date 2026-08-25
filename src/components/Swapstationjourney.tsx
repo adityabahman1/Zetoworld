@@ -7,13 +7,20 @@ interface SwapStep {
   description: string;
 }
 
-const IconDriveIn = () => (
+const IconScan = () => (
   <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="6" y="22" width="30" height="12" rx="3" stroke="currentColor" strokeWidth="2" />
-    <path d="M10 22l4-8h14l4 8" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-    <circle cx="14" cy="34" r="3" stroke="currentColor" strokeWidth="2" />
-    <circle cx="30" cy="34" r="3" stroke="currentColor" strokeWidth="2" />
-    <path d="M38 28h4M40 26v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    <path
+      d="M8 16V10a2 2 0 0 1 2-2h6M40 16V10a2 2 0 0 0-2-2h-6M8 32v6a2 2 0 0 0 2 2h6M40 32v6a2 2 0 0 1-2 2h-6"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <rect x="15" y="15" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2" />
+    <rect x="26" y="15" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2" />
+    <rect x="15" y="26" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2" />
+    <path d="M27 27h3v3M33 30v3h-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 24h40" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="1 4" />
   </svg>
 );
 
@@ -26,7 +33,7 @@ const IconSwap = () => (
   </svg>
 );
 
-const IconDriveOut = () => (
+const IconGo = () => (
   <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="6" y="22" width="30" height="12" rx="3" stroke="currentColor" strokeWidth="2" />
     <path d="M10 22l4-8h14l4 8" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
@@ -39,21 +46,21 @@ const IconDriveOut = () => (
 const STEPS: SwapStep[] = [
   {
     id: "01",
-    icon: <IconDriveIn />,
-    heading: "Pull into the bay",
-    description: "Align the vehicle over the swap dock. Sensors confirm the battery pack position automatically.",
+    icon: <IconScan />,
+    heading: "Scan the station",
+    description: "Open the Zeto Rider app and scan the QR code on the swap station to unlock an open dock.",
   },
   {
     id: "02",
     icon: <IconSwap />,
     heading: "Pack swapped",
-    description: "A robotic arm ejects the depleted battery and locks in a fully charged one, torque-checked for a secure fit.",
+    description: "Drop your depleted battery into the unlocked dock and pull out a fully charged pack from another slot.",
   },
   {
     id: "03",
-    icon: <IconDriveOut />,
-    heading: "Drive away charged",
-    description: "The system runs a final safety check and releases the vehicle — full range restored in under five minutes.",
+    icon: <IconGo />,
+    heading: "Ride away charged",
+    description: "The station confirms the new pack is locked and verified — full range restored in under a minute.",
   },
 ];
 
@@ -69,8 +76,8 @@ const BatterySwapProcess: React.FC = () => {
             Battery swap, start to finish
           </h2>
           <p className="mt-3 text-[#8A948C] max-w-xl mx-auto text-[15px] leading-relaxed">
-            No cables, no waiting on a charger. Three automated steps swap a
-            depleted pack for a full one while you stay in the seat.
+            No cables, no waiting on a charger. Scan, swap, and go — a
+            depleted pack becomes a full one while you stay on the bike.
           </p>
         </div>
 
