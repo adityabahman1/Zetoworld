@@ -77,8 +77,8 @@ const CONTACT_DETAILS = [
   {
     icon: MapPin,
     label: "Visit us",
-    value: "Sector 70, Mohali - 160071",
-    href: "https://www.google.com/maps/search/?api=1&query=Sector+70+Mohali+160071",
+    value: "SCO 10/11, Ambala - Chandigarh Expy, Godown Area, Zirakpur, Punjab 140603",
+    href: "https://maps.app.goo.gl/1UqeoLRaPmd3kZcc9",
   },
 ];
 
