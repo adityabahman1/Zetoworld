@@ -24,19 +24,18 @@ interface SocialLink {
  */
 const COMPANY_LINKS: RouteLink[] = [
   { label: "Home", to: "/" },
-  { label: "Pricing", to: "/pricing" },
   { label: "FOCO Franchise", to: "/foco" },
   { label: "FOFO Franchise", to: "/fofo" },
   { label: "Advertising", to: "/advertising" },
 ];
 
 /**
- * No dedicated pages/routes exist yet for these — left as in-page
- * anchors until real routes are added.
+ * Both legal pages now have real routes — Privacy Policy and Terms of
+ * Service each render their own component.
  */
-const LEGAL_LINKS: AnchorLink[] = [
-  { label: "Privacy Policy", href: "#privacy" },
-  { label: "Terms of Service", href: "#terms" },
+const LEGAL_LINKS: RouteLink[] = [
+  { label: "Privacy Policy", to: "/privacy-policy" },
+  { label: "Terms of Service", to: "/terms-conditons" },
 ];
 
 const SUPPORT_LINKS: (RouteLink | AnchorLink)[] = [
@@ -235,12 +234,12 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               {LEGAL_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.to}
                     className="text-sm text-slate-800 transition-colors hover:text-[#1FA24A]"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -284,19 +283,19 @@ export default function Footer() {
           </p>
 
           <div className="flex items-center gap-5">
-            <a
-              href="#privacy"
+            <Link
+              to="/privacy-policy"
               className="text-xs text-slate-500 transition-colors hover:text-[#1FA24A]"
             >
               Privacy
-            </a>
+            </Link>
 
-            <a
-              href="#terms"
+            <Link
+              to="/terms-conditons"
               className="text-xs text-slate-500 transition-colors hover:text-[#1FA24A]"
             >
               Terms
-            </a>
+            </Link>
           </div>
         </div>
       </div>

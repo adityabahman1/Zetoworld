@@ -6,6 +6,8 @@ import Contact from "./pages/Contact";
 import Foco from "./pages/Foco";
 import Fofo from "./pages/Fofo";
 import Battery from "./pages/Battery";
+import PrivacyPolicy from "./components/Privacypolicy";
+import TermsAndConditions from "./components/Termsandconditions";
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
         <Route path="/foco" element={<Foco />} />
         <Route path="/fofo" element={<Fofo />} />
         <Route path="/battery" element={<Battery />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-conditons" element={<TermsAndConditions />} />
       </Routes>
     </BrowserRouter>
   );
