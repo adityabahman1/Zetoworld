@@ -1,8 +1,7 @@
-import { CircleDot, PanelsTopLeft, Bike, Shield } from "lucide-react";
+import { CircleDot, PanelsTopLeft, Shield } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import img1 from "../assets/ChatGPT Image Aug 26, 2026, 12_14_58 PM.png";
 import img2 from "../assets/ChatGPT Image Aug 18, 2026, 03_26_26 PM.png";
-import img3 from "../assets/ChatGPT Image Aug 18, 2026, 03_24_09 PM.png";
 import img4 from "../assets/ChatGPT Image Aug 26, 2026, 12_17_35 PM.png";
 
 interface AdSpot {
