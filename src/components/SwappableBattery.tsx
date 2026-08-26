@@ -13,7 +13,7 @@ import {
  * Place the uploaded product photo at this path (or update the import):
  *   src/assets/zeto-smart-battery.jpeg
  */
-import batteryImage from "../assets/WhatsApp Image 2026-08-24 at 10.05.09 PM.jpeg";
+import batteryImage from "../assets/ChatGPT Image Aug 26, 2026, 11_12_27 AM.png";
 
 const SPECS = [
   { label: "Voltage", value: "51.2V" },

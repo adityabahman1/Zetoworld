@@ -1,9 +1,9 @@
 import { CircleDot, PanelsTopLeft, Bike, Shield } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import img1 from "../assets/ChatGPT Image Aug 18, 2026, 03_27_49 PM.png";
+import img1 from "../assets/ChatGPT Image Aug 26, 2026, 12_14_58 PM.png";
 import img2 from "../assets/ChatGPT Image Aug 18, 2026, 03_26_26 PM.png";
 import img3 from "../assets/ChatGPT Image Aug 18, 2026, 03_24_09 PM.png";
-import img4 from "../assets/ChatGPT Image Aug 18, 2026, 03_22_57 PM.png";
+import img4 from "../assets/ChatGPT Image Aug 26, 2026, 12_17_35 PM.png";
 
 interface AdSpot {
   icon: LucideIcon;
@@ -38,15 +38,6 @@ const AD_SPOTS: AdSpot[] = [
       "Full-length side panels turn every ride into a moving billboard, visible from both directions in dense city traffic.",
   },
   {
-    icon: Bike,
-    iconBg: "bg-[#E11D48]",
-    iconColor: "text-white",
-    image: img3,
-    title: "Rear Panel Display",
-    description:
-      "Catch the eyes of everyone stuck behind the scooter — ideal for QR codes, offers, and quick call-to-actions.",
-  },
-  {
     icon: CircleDot,
     iconBg: "bg-[#64748B]",
     iconColor: "text-white",
@@ -72,7 +63,7 @@ export default function AdShowcase() {
         </div>
 
         {/* Card grid — photo on top, title + description centered below. */}
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-8 sm:grid-cols-3 lg:grid-cols-3">
           {AD_SPOTS.map((spot) => (
             <div
               key={spot.title}

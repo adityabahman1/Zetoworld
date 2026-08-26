@@ -1,11 +1,12 @@
 // Fofo.tsx — no highlights row, no CTA, just title/description/image
 import HeroCommon from "../components/HeroCommon";
-import adImg from "../assets/ChatGPT Image Aug 24, 2026, 11_19_21 AM.png"
+import adImg from "../assets/WhatsApp Image 2026-08-26 at 11.19.04 AM.jpeg"
 import Header from "../components/Header"
 import Footer from "../components/Footer";
 import GetInTouch from "../components/Getintouch";
 import FofoControlPanel from "../components/Fofocontrolpanel";
 import FofoBenefitCards from "../components/Fofobenefitcards";
+import Zetohubarchitecture from "../components/Zetohubarchitecture";
 
 export function Fofo() {
   return (
@@ -20,6 +21,7 @@ export function Fofo() {
     />
     <FofoBenefitCards/>
     <FofoControlPanel/>
+    <Zetohubarchitecture/>
     <GetInTouch pageType="franchise"/>
     <Footer/>
     </div>

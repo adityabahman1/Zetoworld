@@ -1,12 +1,10 @@
 // Advertising.tsx — no highlights row, no CTA, just title/description/image
 import HeroCommon from "../components/HeroCommon";
-import adImg from "../assets/ChatGPT Image Aug 25, 2026, 03_01_34 PM.png";
+import adImg from "../assets/WhatsApp Image 2026-08-26 at 11.03.25 AM.jpeg";
 import Header from "../components/Header"
 import Footer from "../components/Footer";
 import GetInTouch from "../components/Getintouch";
 import WhyChooseZetoFoco from "../components/Whychoosezetofoco";
-
-import Zetohubarchitecture from "../components/Zetohubarchitecture";
 import Focoroiinvestment from "../components/Focoroiinvestment";
 
 export function Advertising() {
@@ -22,7 +20,6 @@ export function Advertising() {
     />
     <WhyChooseZetoFoco/>
     <Focoroiinvestment/>
-    <Zetohubarchitecture/>
     <GetInTouch pageType="franchise"/>
     <Footer/>
     </div>
