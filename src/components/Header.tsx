@@ -354,7 +354,7 @@ export default function Header({
 
   /*
   |--------------------------------------------------------------------------
-  | NAVIGATION LINK CLASS
+  | DESKTOP NAVIGATION LINK CLASS
   |--------------------------------------------------------------------------
   */
 
@@ -369,13 +369,12 @@ export default function Header({
         font-medium
         transition-colors
         duration-300
-        ${
-          useDarkText
-            ? `
+        ${useDarkText
+          ? `
                 border-[#1FA24A]
                 text-[#1FA24A]
               `
-            : `
+          : `
                 border-white
                 text-white
               `
@@ -388,19 +387,50 @@ export default function Header({
       font-medium
       transition-colors
       duration-300
-      ${
-        useDarkText
-          ? `
+      ${useDarkText
+        ? `
               text-slate-700
               hover:text-[#1FA24A]
             `
-          : `
+        : `
               text-white/90
               hover:text-white
             `
       }
     `;
   };
+
+  /*
+  |--------------------------------------------------------------------------
+  | MOBILE NAVIGATION LINK CLASS
+  |--------------------------------------------------------------------------
+  |
+  | IMPORTANT:
+  |
+  | This is used for EVERY mobile nav item regardless of
+  | link.type (scroll / route / dropdown trigger), so that
+  | "Home" renders identically to "Battery", "Advertising",
+  | and "Contact" instead of falling back to the (smaller,
+  | unbordered) desktop class.
+  |
+  */
+
+  const getMobileLinkClass = (
+    isActive: boolean
+  ) => `
+    block
+    py-3
+    text-base
+    font-medium
+    border-b
+    border-slate-100
+    transition-colors
+    duration-200
+    ${isActive
+      ? "text-[#1FA24A]"
+      : "text-slate-800 hover:text-[#1FA24A]"
+    }
+  `;
 
   /*
   |--------------------------------------------------------------------------
@@ -413,7 +443,11 @@ export default function Header({
     isActive: boolean,
     mobile = false
   ) => {
-    const className = getNavClass(
+    const desktopClassName = getNavClass(
+      isActive
+    );
+
+    const mobileClassName = getMobileLinkClass(
       isActive
     );
 
@@ -427,12 +461,8 @@ export default function Header({
           }
           className={
             mobile
-              ? `
-                  block
-                  py-1
-                  ${className}
-                `
-              : className
+              ? mobileClassName
+              : desktopClassName
           }
         >
           {link.label}
@@ -453,12 +483,8 @@ export default function Header({
         }
         className={
           mobile
-            ? `
-                block
-                py-1
-                ${className}
-              `
-            : className
+            ? mobileClassName
+            : desktopClassName
         }
       >
         {link.label}
@@ -492,17 +518,16 @@ export default function Header({
           font-medium
           transition-colors
           duration-300
-          ${
-            useDarkText
-              ? `
+          ${useDarkText
+        ? `
                   border-[#1FA24A]
                   text-[#1FA24A]
                 `
-              : `
+        : `
                   border-white
                   text-white
                 `
-          }
+      }
         `
       : `
           flex
@@ -512,17 +537,16 @@ export default function Header({
           font-medium
           transition-colors
           duration-300
-          ${
-            useDarkText
-              ? `
+          ${useDarkText
+        ? `
                   text-slate-700
                   hover:text-[#1FA24A]
                 `
-              : `
+        : `
                   text-white/90
                   hover:text-white
                 `
-          }
+      }
         `;
 
     return (
@@ -563,10 +587,9 @@ export default function Header({
             className={`
               transition-transform
               duration-200
-              ${
-                isOpen
-                  ? "rotate-180"
-                  : ""
+              ${isOpen
+                ? "rotate-180"
+                : ""
               }
             `}
           />
@@ -754,7 +777,7 @@ export default function Header({
                           "
                         >
                           {child.label ===
-                          "FOCO"
+                            "FOCO"
                             ? "Franchise Owned, Company Operated"
                             : "Franchise Owned, Franchise Operated"}
                         </p>
@@ -776,144 +799,73 @@ export default function Header({
   |--------------------------------------------------------------------------
   */
 
-  const renderMobileDropdown = (
-    link: NavLink
-  ) => {
-    const isActive =
-      active === link.label;
-
-    const isOpen =
-      openDropdown === link.label;
+  const renderMobileDropdown = (link: NavLink) => {
+    const isOpen = openDropdown === link.label;
 
     return (
-      <div
-        key={link.label}
-        className="flex flex-col"
-      >
+      <div key={link.label} className="border-b border-slate-100 pb-3">
         <button
           type="button"
-          onClick={() => {
-            if (isOpen) {
-              setOpenDropdown(null);
-            } else {
-              setOpenDropdown(
-                link.label
-              );
-            }
-          }}
-          className={`
-            flex
-            w-full
-            items-center
-            justify-between
-            py-1
-            text-left
-            text-sm
-            font-medium
-            ${
-              isActive
-                ? "text-[#1FA24A]"
-                : "text-slate-700 hover:text-[#1FA24A]"
-            }
-          `}
-          aria-expanded={isOpen}
+          onClick={() =>
+            setOpenDropdown(isOpen ? null : link.label)
+          }
+          className="
+          flex
+          w-full
+          items-center
+          justify-between
+          py-3
+          text-left
+          text-base
+          font-medium
+          text-slate-800
+        "
         >
           <span>{link.label}</span>
 
           <ChevronDown
-            size={16}
-            className={`
-              transition-transform
-              duration-200
-              ${
-                isOpen
-                  ? "rotate-180"
-                  : ""
-              }
-            `}
+            size={18}
+            className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""
+              }`}
           />
         </button>
 
         {isOpen && (
-          <div
-            className="
-              mt-3
-              grid
-              grid-cols-2
-              gap-3
-            "
-          >
-            {link.children?.map(
-              (child) => (
-                <Link
-                  key={child.label}
-                  to={child.to}
-                  onClick={() => {
-                    setActive(
-                      link.label
-                    );
+          <div className="mt-3 flex flex-col gap-3">
+            {link.children?.map((child) => (
+              <Link
+                key={child.label}
+                to={child.to}
+                onClick={() => {
+                  setMobileOpen(false);
+                  setOpenDropdown(null);
+                }}
+                className="
+                rounded-xl
+                border
+                border-slate-200
+                bg-slate-50
+                px-4
+                py-4
+                text-sm
+                font-medium
+                text-slate-700
+                transition-all
+                hover:border-[#1FA24A]
+                hover:bg-[#1FA24A]/5
+              "
+              >
+                <div className="font-semibold text-[#1FA24A]">
+                  {child.label}
+                </div>
 
-                    setOpenDropdown(
-                      null
-                    );
-
-                    setMobileOpen(
-                      false
-                    );
-                  }}
-                  className="
-                    group
-                    flex
-                    flex-col
-                    items-center
-                    rounded-xl
-                    border
-                    border-slate-200
-                    bg-white
-                    p-3
-                    text-center
-                    shadow-sm
-                    transition-all
-                    duration-200
-                    hover:border-[#1FA24A]
-                    hover:shadow-md
-                  "
-                >
-                  <div
-                    className="
-                      flex
-                      h-14
-                      w-full
-                      items-center
-                      justify-center
-                      rounded-lg
-                      bg-[#1FA24A]/10
-                      text-sm
-                      font-bold
-                      text-[#1FA24A]
-                    "
-                  >
-                    {child.label}
-                  </div>
-
-                  <span
-                    className="
-                      mt-2
-                      text-[11px]
-                      font-semibold
-                      leading-tight
-                      text-slate-700
-                      group-hover:text-[#1FA24A]
-                    "
-                  >
-                    {child.label ===
-                    "FOCO"
-                      ? "Company Operated"
-                      : "Franchise Operated"}
-                  </span>
-                </Link>
-              )
-            )}
+                <div className="mt-1 text-xs text-slate-500">
+                  {child.label === "FOCO"
+                    ? "Franchise Owned Company Operated"
+                    : "Franchise Owned Franchise Operated"}
+                </div>
+              </Link>
+            ))}
           </div>
         )}
       </div>
@@ -938,15 +890,14 @@ export default function Header({
         transition-all
         duration-300
         ease-in-out
-        ${
-          headerHasWhiteBackground
-            ? `
+        ${headerHasWhiteBackground
+          ? `
                 border-slate-200/80
                 bg-white/95
                 shadow-sm
                 backdrop-blur-xl
               `
-            : `
+          : `
                 border-transparent
                 bg-transparent
               `
@@ -989,10 +940,9 @@ export default function Header({
               tracking-tight
               transition-colors
               duration-300
-              ${
-                useDarkText
-                  ? "text-[#1d7239]"
-                  : "text-white drop-shadow-md"
+              ${useDarkText
+                ? "text-[#1d7239]"
+                : "text-white drop-shadow-md"
               }
             `}
           >
@@ -1017,13 +967,13 @@ export default function Header({
           {NAV_LINKS.map((link) =>
             link.type === "dropdown"
               ? renderDesktopDropdown(
-                  link
-                )
+                link
+              )
               : renderLink(
-                  link,
-                  active ===
-                    link.label
-                )
+                link,
+                active ===
+                link.label
+              )
           )}
         </nav>
 
@@ -1057,14 +1007,13 @@ export default function Header({
               font-semibold
               transition-all
               duration-300
-              ${
-                useDarkText
-                  ? `
+              ${useDarkText
+                ? `
                       border-[#1FA24A]
                       text-[#1FA24A]
                       hover:bg-[#1FA24A]/10
                     `
-                  : `
+                : `
                       border-white/80
                       text-white
                       hover:bg-white/10
@@ -1118,13 +1067,12 @@ export default function Header({
             transition-colors
             duration-300
             lg:hidden
-            ${
-              useDarkText
-                ? `
+            ${useDarkText
+              ? `
                     text-slate-700
                     hover:bg-slate-100
                   `
-                : `
+              : `
                     text-white
                     hover:bg-white/10
                   `
@@ -1156,98 +1104,125 @@ export default function Header({
           =========================================================== */}
 
       {mobileOpen && (
-        <div
-          className="
-            border-t
-            border-slate-200
-            bg-white
+        <>
+          <div
+            className="
+        fixed
+        inset-0
+        z-[9998]
+        bg-black/40
+        lg:hidden
+      "
+            onClick={() => setMobileOpen(false)}
+          />
+
+          <div
+            className="
+        fixed
+        top-0
+        right-0
+        z-[9999]
+        h-screen
+        w-full
+        max-w-sm
+        overflow-y-auto
+        bg-white
+        shadow-2xl
+        lg:hidden
+      "
+          >
+            {/* Header */}
+
+            <div
+              className="
+          flex
+          items-center
+          justify-between
+          bg-gradient-to-r
+          from-[#163622]
+          to-[#bfcfc3]
+          px-6
+          py-6
+        "
+            >
+              <span className="text-4xl font-bold text-white">
+                zeto
+              </span>
+
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="text-white"
+              >
+                <X size={28} />
+              </button>
+            </div>
+
+            {/* Menu */}
+
+            <div className="px-6 py-6">
+              <nav className="flex flex-col gap-2">
+                {NAV_LINKS.map((link) =>
+                  link.type === "dropdown"
+                    ? renderMobileDropdown(link)
+                    : renderLink(
+                      link,
+                      active === link.label,
+                      true
+                    )
+                )}
+              </nav>
+
+              <a
+                href={PLAY_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+            mt-8
+            flex
+            w-full
+            items-center
+            justify-center
+            gap-2
+            rounded-full
+            border
+            border-[#1FA24A]
             px-6
-            py-5
-            shadow-xl
-            lg:hidden
+            py-4
+            text-base
+            font-semibold
+            text-[#1FA24A]
           "
-        >
-          <nav
-            className="
-              flex
-              flex-col
-              gap-5
-            "
-            aria-label="Mobile Navigation"
-          >
-            {NAV_LINKS.map((link) =>
-              link.type === "dropdown"
-                ? renderMobileDropdown(
-                    link
-                  )
-                : renderLink(
-                    link,
-                    active ===
-                      link.label,
-                    true
-                  )
-            )}
-          </nav>
+              >
+                <Smartphone size={18} />
+                Get the App
+              </a>
 
-          {/* Mobile Get App */}
-
-          <a
-            href={PLAY_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              mt-6
-              flex
-              w-full
-              items-center
-              justify-center
-              gap-2
-              rounded-full
-              border
-              border-[#1FA24A]
-              px-6
-              py-3
-              text-sm
-              font-semibold
-              text-[#1FA24A]
-              transition-all
-              hover:bg-[#1FA24A]/10
-            "
-          >
-            <Smartphone size={16} />
-
-            Get the App
-          </a>
-
-          {/* Mobile Get Started */}
-
-          <Link
-            to="/contact"
-            onClick={() => {
-              setActive("Contact");
-              setMobileOpen(false);
-              setOpenDropdown(null);
-            }}
-            className="
-              mt-3
-              flex
-              w-full
-              items-center
-              justify-center
-              rounded-full
-              bg-[#1FA24A]
-              px-6
-              py-3
-              text-sm
-              font-semibold
-              text-white
-              transition-all
-              hover:bg-[#188A3E]
-            "
-          >
-            Get Started
-          </Link>
-        </div>
+              <Link
+                to="/contact"
+                onClick={() => {
+                  setMobileOpen(false);
+                  setOpenDropdown(null);
+                }}
+                className="
+            mt-4
+            flex
+            w-full
+            items-center
+            justify-center
+            rounded-full
+            bg-[#1FA24A]
+            px-6
+            py-4
+            text-base
+            font-semibold
+            text-white
+          "
+              >
+                Get Started
+              </Link>
+            </div>
+          </div>
+        </>
       )}
     </header>
   );
