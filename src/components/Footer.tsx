@@ -53,20 +53,10 @@ const SOCIAL_LINKS: SocialLink[] = [
     icon: "Instagram",
   },
   {
-    href: "https://linkedin.com/company/zetoworld",
+    href: "https://www.linkedin.com/company/zetrax-tech-pvt-ltd/",
     label: "LinkedIn",
     icon: "LinkedIn",
-  },
-  {
-    href: "https://twitter.com/zetoworld",
-    label: "Twitter / X",
-    icon: "X",
-  },
-  {
-    href: "https://facebook.com/zetoworld",
-    label: "Facebook",
-    icon: "Facebook",
-  },
+  }
 ];
 
 function SocialIcon({ type }: { type: SocialLink["icon"] }) {

@@ -1,74 +1,82 @@
+import img from "../assets/ChatGPT Image Aug 27, 2026, 03_27_56 PM.png"
 
 type IconProps = {
-  size?: number;
-  strokeWidth?: number;
+    size?: number;
+    strokeWidth?: number;
 };
 
 const Icon = {
-  Alert: ({ size = 20, strokeWidth = 2 }: IconProps) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth={strokeWidth} />
-      <path d="M12 7.5v5" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
-      <circle cx="12" cy="16" r="1" fill="currentColor" />
-    </svg>
-  ),
-  Check: ({ size = 20, strokeWidth = 2.5 }: IconProps) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth={strokeWidth} />
-      <path d="m7.7 12.1 2.8 2.8 5.9-6" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  ),
-  MapPin: ({ size = 18, strokeWidth = 2 }: IconProps) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M19 10.2c0 5.1-7 10.3-7 10.3S5 15.3 5 10.2a7 7 0 1 1 14 0Z" stroke="currentColor" strokeWidth={strokeWidth} />
-      <circle cx="12" cy="10" r="2.2" stroke="currentColor" strokeWidth={strokeWidth} />
-    </svg>
-  ),
-  Eye: ({ size = 22, strokeWidth = 2 }: IconProps) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M2.8 12s3.2-6 9.2-6 9.2 6 9.2 6-3.2 6-9.2 6-9.2-6-9.2-6Z" stroke="currentColor" strokeWidth={strokeWidth} />
-      <circle cx="12" cy="12" r="2.6" stroke="currentColor" strokeWidth={strokeWidth} />
-    </svg>
-  ),
-  Users: ({ size = 22, strokeWidth = 2 }: IconProps) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="9" cy="8" r="3" stroke="currentColor" strokeWidth={strokeWidth} />
-      <path d="M3.5 19c.6-3.2 2.4-5 5.5-5s4.9 1.8 5.5 5" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
-      <path d="M15.5 5.5a3 3 0 0 1 0 5.8M17 14.2c2 .6 3.1 2 3.5 4.2" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
-    </svg>
-  ),
-  Leaf: ({ size = 22, strokeWidth = 2 }: IconProps) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M19.5 4.5C12 4.7 6.4 7.2 6.4 13.1c0 3.4 2.5 5.3 5.3 5.3 5.5 0 7.4-6.6 7.8-13.9Z" stroke="currentColor" strokeWidth={strokeWidth} strokeLinejoin="round" />
-      <path d="M4.5 20c2.5-5.5 6.3-8.2 11.2-10.2" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
-    </svg>
-  ),
-  Chart: ({ size = 22, strokeWidth = 2 }: IconProps) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M4 19V5M4 19h17" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
-      <path d="m7 15 3-3 3 2 6-7" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  ),
-  Arrow: ({ size = 24, strokeWidth = 2 }: IconProps) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  ),
-  Billboard: ({ size = 46, strokeWidth = 1.7 }: IconProps) => (
-    <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden="true">
-      <rect x="8" y="8" width="45" height="25" rx="2" stroke="currentColor" strokeWidth={strokeWidth} />
-      <path d="M12 12h37v17H12z" fill="currentColor" opacity=".08" />
-      <path d="M30.5 33v20M23 53h15M12 39h38M16 33l-4 6M48 33l4 6" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
-      <path d="M18 8V5M28 8V5M38 8V5M48 8V5" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
-    </svg>
-  ),
+    Alert: ({ size = 20, strokeWidth = 2 }: IconProps) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth={strokeWidth} />
+            <path d="M12 7.5v5" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+            <circle cx="12" cy="16" r="1" fill="currentColor" />
+        </svg>
+    ),
+    Check: ({ size = 20, strokeWidth = 2.5 }: IconProps) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth={strokeWidth} />
+            <path d="m7.7 12.1 2.8 2.8 5.9-6" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    MapPin: ({ size = 18, strokeWidth = 2 }: IconProps) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M19 10.2c0 5.1-7 10.3-7 10.3S5 15.3 5 10.2a7 7 0 1 1 14 0Z" stroke="currentColor" strokeWidth={strokeWidth} />
+            <circle cx="12" cy="10" r="2.2" stroke="currentColor" strokeWidth={strokeWidth} />
+        </svg>
+    ),
+    Eye: ({ size = 22, strokeWidth = 2 }: IconProps) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M2.8 12s3.2-6 9.2-6 9.2 6 9.2 6-3.2 6-9.2 6-9.2-6-9.2-6Z" stroke="currentColor" strokeWidth={strokeWidth} />
+            <circle cx="12" cy="12" r="2.6" stroke="currentColor" strokeWidth={strokeWidth} />
+        </svg>
+    ),
+    Users: ({ size = 22, strokeWidth = 2 }: IconProps) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="9" cy="8" r="3" stroke="currentColor" strokeWidth={strokeWidth} />
+            <path d="M3.5 19c.6-3.2 2.4-5 5.5-5s4.9 1.8 5.5 5" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+            <path d="M15.5 5.5a3 3 0 0 1 0 5.8M17 14.2c2 .6 3.1 2 3.5 4.2" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+        </svg>
+    ),
+    Leaf: ({ size = 22, strokeWidth = 2 }: IconProps) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M19.5 4.5C12 4.7 6.4 7.2 6.4 13.1c0 3.4 2.5 5.3 5.3 5.3 5.5 0 7.4-6.6 7.8-13.9Z" stroke="currentColor" strokeWidth={strokeWidth} strokeLinejoin="round" />
+            <path d="M4.5 20c2.5-5.5 6.3-8.2 11.2-10.2" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+        </svg>
+    ),
+    Chart: ({ size = 22, strokeWidth = 2 }: IconProps) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 19V5M4 19h17" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+            <path d="m7 15 3-3 3 2 6-7" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    Arrow: ({ size = 24, strokeWidth = 2 }: IconProps) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
+    Billboard: ({ size = 46, strokeWidth = 1.7 }: IconProps) => (
+        <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <rect x="8" y="8" width="45" height="25" rx="2" stroke="currentColor" strokeWidth={strokeWidth} />
+            <path d="M12 12h37v17H12z" fill="currentColor" opacity=".08" />
+            <path d="M30.5 33v20M23 53h15M12 39h38M16 33l-4 6M48 33l4 6" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+            <path d="M18 8V5M28 8V5M38 8V5M48 8V5" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+        </svg>
+    ),
+    Image: ({ size = 28, strokeWidth = 1.7 }: IconProps) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="2.5" stroke="currentColor" strokeWidth={strokeWidth} />
+            <circle cx="8.5" cy="9.5" r="1.6" stroke="currentColor" strokeWidth={strokeWidth} />
+            <path d="M4 16.5 9 12l3.2 3 3-2.5L21 16.5" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    ),
 };
 
 const problems = [
-  "Static & easy to ignore",
-  "Limited to fixed locations",
-  "High cost to reach audiences",
-  "No meaningful audience tracking",
+    "Static & easy to ignore",
+    "Limited to fixed locations",
+    "High cost to reach audiences",
+    "No meaningful audience tracking",
 ];
 
 const zones = ["Restaurants", "Offices", "Markets", "Residential", "Universities", "IT Parks", "Airports", "Metro Stations"];
@@ -76,9 +84,9 @@ const zones = ["Restaurants", "Offices", "Markets", "Residential", "Universities
 
 
 export default function ZetoMovingBillboardsSection() {
-  return (
-    <section className="zeto-section" aria-labelledby="zeto-heading">
-      <style>{`
+    return (
+        <section className="zeto-section" aria-labelledby="zeto-heading">
+            <style>{`
         .zeto-section {
           --zeto-green: #08752d;
           --zeto-dark: #063f25;
@@ -262,6 +270,58 @@ export default function ZetoMovingBillboardsSection() {
         .zeto-billboard svg {
           width: 150px;
           height: 150px;
+          position: relative;
+          z-index: 1;
+        }
+
+        /* --- Image placeholder (left card) ---
+           This replaces the illustrative billboard icon so there's a clear
+           drop-zone for a real photo. Swap in a real <img> using
+           .zeto-billboard-img (see the component markup below) and this
+           dashed placeholder will no longer be needed. */
+        .zeto-billboard.zeto-image-placeholder {
+          border: 1.5px dashed #d8c3bf;
+          border-radius: 16px;
+          background: rgba(255, 255, 255, .5);
+        }
+
+        .zeto-billboard.zeto-image-placeholder:after {
+          content: none;
+        }
+
+        .zeto-placeholder-inner {
+          display: grid;
+          justify-items: center;
+          gap: 6px;
+          color: #9a8f8c;
+          padding: 18px;
+          text-align: center;
+        }
+
+        .zeto-placeholder-inner svg {
+          width: 30px;
+          height: 30px;
+          color: #b8aca8;
+        }
+
+        .zeto-placeholder-text {
+          font-size: 13px;
+          font-weight: 700;
+          color: #7d716d;
+        }
+
+        .zeto-placeholder-dims {
+          font-size: 11px;
+          color: #a89d99;
+        }
+
+        /* Use this once a real photo is added via <img className="zeto-billboard-img" /> */
+        .zeto-billboard-img {
+          width: 100%;
+          height: 100%;
+          max-height: 220px;
+          object-fit: cover;
+          border-radius: 16px;
           position: relative;
           z-index: 1;
         }
@@ -560,123 +620,93 @@ export default function ZetoMovingBillboardsSection() {
         }
       `}</style>
 
-      <div className="zeto-shell">
-        <header className="zeto-header">
-          <div className="zeto-heading-wrap">
-            <div className="zeto-eyebrow" />
-            <h2 id="zeto-heading" className="zeto-heading">
-              The Problem <span>&amp; Our Solution</span>
-            </h2>
-            <p className="zeto-subtitle">
-              Traditional advertising is expensive and hard to measure.
-              <br />
-              <strong>ZETO</strong> turns everyday movement into hyperlocal brand visibility.
-            </p>
-          </div>
+            <div className="zeto-shell">
+                <header className="zeto-header">
+                    <div className="zeto-heading-wrap">
+                        <div className="zeto-eyebrow" />
+                        <h2 id="zeto-heading" className="zeto-heading">
+                            The Problem <span>&amp; Our Solution</span>
+                        </h2>
+                        <p className="zeto-subtitle">
+                            Traditional advertising is expensive and hard to measure.
+                            <br />
+                            <strong>ZETO</strong> turns everyday movement into hyperlocal brand visibility.
+                        </p>
+                    </div>
 
-          
-        </header>
 
-        <div className="zeto-grid">
-          <article className="zeto-card zeto-problem">
-            <div className="zeto-card-title">
-              <div className="zeto-title-icon"><Icon.Alert /></div>
-              <span>THE PROBLEM — STATIC BILLBOARDS</span>
-            </div>
+                </header>
 
-            <div className="zeto-problem-body">
-              <div className="zeto-billboard">
-                <Icon.Billboard size={150} />
-              </div>
+                <div className="zeto-grid">
 
-              <div className="zeto-problem-list">
-                {problems.map((problem) => (
-                  <div className="zeto-problem-item" key={problem}>
-                    <span className="zeto-x">×</span>
-                    <span>{problem}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+                    <div className="rounded-[20px] overflow-hidden">
+                        <img src={img} alt="" />
+                    </div>
 
-            <div className="zeto-problem-footer">
-              <svg className="zeto-mini-chart" viewBox="0 0 42 42" fill="none" aria-hidden="true">
-                <path d="M5 35V8M5 35h31" stroke="currentColor" strokeWidth="2" />
-                <path d="m9 28 7-7 6 4 9-13" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M26 12h5v5" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span>
-                Brands need <strong>better ROI</strong>, local visibility,
-                continuous exposure and measurable reach.
-              </span>
-            </div>
-          </article>
 
-          
+                    <article className="zeto-card zeto-solution">
+                        <div className="zeto-card-title">
+                            <div className="zeto-title-icon"><Icon.Check /></div>
+                            <span>OUR SOLUTION — MOVING BILLBOARDS</span>
+                        </div>
 
-          <article className="zeto-card zeto-solution">
-            <div className="zeto-card-title">
-              <div className="zeto-title-icon"><Icon.Check /></div>
-              <span>OUR SOLUTION — MOVING BILLBOARDS</span>
-            </div>
+                        <div className="zeto-solution-top">
+                            <div>
+                                <div className="zeto-stat">
+                                    <span className="zeto-stat-number">500+</span>
+                                </div>
+                                <div className="zeto-stat-label mt-4">Electric scooters on the move</div>
+                            </div>
 
-            <div className="zeto-solution-top">
-              <div>
-                <div className="zeto-stat">
-                  <span className="zeto-stat-number">500+</span>
+                            <div className="zeto-locations">
+                                {["Chandigarh", "Mohali", "Panchkula"].map((location) => (
+                                    <span className="zeto-location" key={location}>
+                                        <Icon.MapPin size={14} />
+                                        {location}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="zeto-coverage-label">Daily coverage across</div>
+
+                        <div className="zeto-solution-content">
+                            <div className="zeto-zones">
+                                {zones.map((zone) => (
+                                    <div className="zeto-zone" key={zone}>
+                                        <span className="zeto-zone-dot" />
+                                        {zone}
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="zeto-map" aria-label="Illustrative moving scooter route map">
+                                <div className="zeto-map-grid" />
+                                <svg className="zeto-route" viewBox="0 0 260 190" fill="none" aria-hidden="true">
+                                    <path
+                                        d="M214 25C188 20 164 29 177 47C189 64 232 51 220 73C209 92 142 73 132 99C122 126 187 129 170 153C158 170 87 145 62 159"
+                                        stroke="#8fdc20"
+                                        strokeWidth="4"
+                                        strokeLinecap="round"
+                                        strokeDasharray="1 1"
+                                    />
+                                    <path
+                                        d="M218 26C190 19 166 28 178 47"
+                                        stroke="#d0f89b"
+                                        strokeWidth="1.5"
+                                        opacity=".7"
+                                    />
+                                </svg>
+                                <span className="zeto-pin one" />
+                                <span className="zeto-pin two" />
+                                <span className="zeto-pin three" />
+                            </div>
+                        </div>
+
+
+                    </article>
                 </div>
-                <div className="zeto-stat-label mt-4">Electric scooters on the move</div>
-              </div>
-
-              <div className="zeto-locations">
-                {["Chandigarh", "Mohali", "Panchkula"].map((location) => (
-                  <span className="zeto-location" key={location}>
-                    <Icon.MapPin size={14} />
-                    {location}
-                  </span>
-                ))}
-              </div>
             </div>
-
-            <div className="zeto-coverage-label">Daily coverage across</div>
-
-            <div className="zeto-solution-content">
-              <div className="zeto-zones">
-                {zones.map((zone) => (
-                  <div className="zeto-zone" key={zone}>
-                    <span className="zeto-zone-dot" />
-                    {zone}
-                  </div>
-                ))}
-              </div>
-
-              <div className="zeto-map" aria-label="Illustrative moving scooter route map">
-                <div className="zeto-map-grid" />
-                <svg className="zeto-route" viewBox="0 0 260 190" fill="none" aria-hidden="true">
-                  <path
-                    d="M214 25C188 20 164 29 177 47C189 64 232 51 220 73C209 92 142 73 132 99C122 126 187 129 170 153C158 170 87 145 62 159"
-                    stroke="#8fdc20"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                    strokeDasharray="1 1"
-                  />
-                  <path
-                    d="M218 26C190 19 166 28 178 47"
-                    stroke="#d0f89b"
-                    strokeWidth="1.5"
-                    opacity=".7"
-                  />
-                </svg>
-                <span className="zeto-pin one" />
-                <span className="zeto-pin two" />
-                <span className="zeto-pin three" />
-              </div>
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 }

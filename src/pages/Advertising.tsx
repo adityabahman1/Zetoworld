@@ -14,9 +14,9 @@ export function Advertising() {
     <div>
     <Header variant="dark"/>
     <HeroCommon
-      title="Reach Riders,"
-      highlight="Reach Cities"
-      description="Advertise on Zeto's fleet and put your brand in front of thousands daily."
+      title="Turn Every Ride  "
+      highlight="Into Brand Reach"
+      description="Connect with customers across cities through high-visibility advertising on Zeto's fleet."
       heroImage={adImg}
       heroImageAlt="Branded Zeto scooter fleet"
     />
