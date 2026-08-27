@@ -72,12 +72,6 @@ const Icon = {
     ),
 };
 
-const problems = [
-    "Static & easy to ignore",
-    "Limited to fixed locations",
-    "High cost to reach audiences",
-    "No meaningful audience tracking",
-];
 
 const zones = ["Restaurants", "Offices", "Markets", "Residential", "Universities", "IT Parks", "Airports", "Metro Stations"];
 
