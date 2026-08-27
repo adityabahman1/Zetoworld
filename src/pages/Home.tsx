@@ -8,6 +8,8 @@ import GetInTouch from "../components/Getintouch";
 import Footer from "../components/Footer";
 import HeroCommon from "../components/HeroCommon";
 import img from "../assets/ChatGPT Image Aug 22, 2026, 03_41_37 PM.png"
+import Missiondashboard from "../components/Missiondashboard";
+import Cityroute from "../components/Cityroute";
 
 export default function Home() {
   return (
@@ -21,7 +23,9 @@ export default function Home() {
           heroImageAlt="Zeto franchise owner running their site"
         />
       <WhyChooseZeto />
-      <ProcessSteps />
+      <Missiondashboard/>
+      <ProcessSteps />     
+      <Cityroute/>
       <JoinCommunity />
       <Partners />
       <GetInTouch pageType="home" />

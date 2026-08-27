@@ -39,8 +39,6 @@ const LEGAL_LINKS: RouteLink[] = [
 ];
 
 const SUPPORT_LINKS: (RouteLink | AnchorLink)[] = [
-  { label: "FAQ", href: "#faq" },
-  { label: "Support", href: "#support" },
   { label: "Contact Us", to: "/contact" },
 ];
 
@@ -50,7 +48,7 @@ function isRouteLink(link: RouteLink | AnchorLink): link is RouteLink {
 
 const SOCIAL_LINKS: SocialLink[] = [
   {
-    href: "https://instagram.com/zetoworld",
+    href: "https://www.instagram.com/zetoelectric/",
     label: "Instagram",
     icon: "Instagram",
   },
@@ -184,7 +182,7 @@ export default function Footer() {
                   size={14}
                   className="mt-0.5 flex-shrink-0 text-[#1FA24A]"
                 />
-                Sector 70, Mohali - 160071
+                SCO 10/11, Ambala - Chandigarh Expy, Godown Area, Zirakpur, Punjab 140603
               </div>
             </div>
 

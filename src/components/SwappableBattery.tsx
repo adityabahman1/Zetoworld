@@ -13,12 +13,12 @@ import {
  * Place the uploaded product photo at this path (or update the import):
  *   src/assets/zeto-smart-battery.jpeg
  */
-import batteryImage from "../assets/ChatGPT Image Aug 26, 2026, 11_12_27 AM.png";
+import batteryImage from "../assets/ChatGPT Image Aug 27, 2026, 11_31_24 AM.png";
 
 const SPECS = [
   { label: "Voltage", value: "51.2V" },
-  { label: "Capacity", value: "34Ah" },
-  { label: "Energy", value: "1740Wh" },
+  { label: "Capacity", value: "45Ah" },
+  { label: "Energy", value: "2,304Wh" },
   { label: "Chemistry", value: "LFP" },
 ] as const;
 
@@ -39,7 +39,7 @@ const HIGHLIGHTS = [
     icon: Zap,
     title: "High performance",
     description:
-      "51.2V / 34Ah delivers consistent power output across the full discharge curve — from a cold start to the last kilometre.",
+      "51.2V / 45Ah delivers consistent power output across the full discharge curve — from a cold start to the last kilometre.",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function SwappableBattery() {
             <div className="relative overflow-hidden rounded-[28px] border border-slate-100 bg-slate-50 shadow-[0_25px_80px_-30px_rgba(15,23,42,0.35)]">
               <img
                 src={batteryImage}
-                alt="Zeto Smart LFP battery, model B699847, rated 51.2V 34Ah 1740Wh"
+                alt="Zeto Energy LFP battery, model B699847, rated 51.2V 45Ah 2,304Wh"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -87,7 +87,7 @@ export default function SwappableBattery() {
           <div className="order-1 lg:order-2">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#1FA24A]/20 bg-[#1FA24A]/5 px-3.5 py-1.5 text-xs font-semibold text-[#188A3E]">
               <Layers size={13} />
-              Zeto Smart Battery
+              Zeto Energy Battery
             </div>
 
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
@@ -97,7 +97,7 @@ export default function SwappableBattery() {
             </h2>
 
             <p className="mt-4 text-base leading-relaxed text-slate-500">
-              Every Zeto Smart battery is a self-contained, swappable LFP
+              Every Zeto Energy battery is a self-contained, swappable LFP
               pack — pull it out of one scooter, drop it into a dock, and go.
               No cables, no waiting, no downtime for your fleet.
             </p>

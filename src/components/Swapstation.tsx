@@ -69,7 +69,7 @@ export default function SwapStation() {
         <div className="mx-auto max-w-2xl text-center">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-[#1FA24A]/20 bg-[#1FA24A]/5 px-3.5 py-1.5 text-xs font-semibold text-[#188A3E]">
             <Grid3x3 size={13} />
-            Zeto Smart Battery Swap
+            Zeto Energy Battery Swap
           </div>
 
           <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
@@ -98,7 +98,7 @@ export default function SwapStation() {
           <div className="relative mx-auto w-4/5 overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_25px_80px_-30px_rgba(15,23,42,0.3)]">
             <img
               src={stationImage}
-              alt="Zeto smart battery swap station with a Zeto scooter parked alongside"
+              alt="Zeto Energy battery swap station with a Zeto scooter parked alongside"
               className="h-full w-full object-cover"
             />
           </div>
