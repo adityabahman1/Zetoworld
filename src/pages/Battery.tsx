@@ -21,6 +21,8 @@ export function Battery() {
         description="Trade your depleted battery for a fully charged one at any Zeto station, anytime."
         heroImage={adImg}
         heroImageAlt="Zeto battery swapping station"
+        imagePosition="center"           // desktop stays exactly as it is now
+        mobileImagePosition="60% center"
       />
       <ZetoBatterySwapStation/>
       <Swapstation/>

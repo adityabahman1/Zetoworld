@@ -20,6 +20,8 @@ export function Contact() {
         description="Ride with us, build with us, or put your brand on the move. Explore the different ways you can partner with Zeto."
         heroImage={adImg}
         heroImageAlt="Zeto partnership and advertising"
+        imagePosition="center"           // desktop stays exactly as it is now
+        mobileImagePosition="80% center"
       />
 
       {/* =========================

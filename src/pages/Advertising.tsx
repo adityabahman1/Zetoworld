@@ -19,6 +19,8 @@ export function Advertising() {
       description="Connect with customers across cities through high-visibility advertising on Zeto's fleet."
       heroImage={adImg}
       heroImageAlt="Branded Zeto scooter fleet"
+         imagePosition="center"           // desktop stays exactly as it is now
+        mobileImagePosition="75% center"
     />
     <AdShowcase/>
     <ZetoMovingBillboardsSection/>

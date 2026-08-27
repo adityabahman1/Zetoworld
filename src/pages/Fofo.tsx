@@ -11,19 +11,21 @@ import Zetohubarchitecture from "../components/Zetohubarchitecture";
 export function Fofo() {
   return (
     <div>
-    <Header variant="dark"/>
-    <HeroCommon
-      title="Own & Operate "
-      highlight="Your EV Dealership"
-      description="Partner with ZETO through the FOFO model — you own and operate the business, Zeto equips you with playbook, training, and brand behind it."
-      heroImage={adImg}
-      heroImageAlt="Zeto franchise owner running their site"
-    />
-    <FofoBenefitCards/>
-    <FofoControlPanel/>
-    <Zetohubarchitecture/>
-    <GetInTouch pageType="franchise"/>
-    <Footer/>
+      <Header variant="dark" />
+      <HeroCommon
+        title="Own & Operate "
+        highlight="Your EV Dealership"
+        description="Partner with ZETO through the FOFO model — you own and operate the business, Zeto equips you with playbook, training, and brand behind it."
+        heroImage={adImg}
+        heroImageAlt="Zeto franchise owner running their site"
+        imagePosition="center"           // desktop stays exactly as it is now
+        mobileImagePosition="50% center"
+      />
+      <FofoBenefitCards />
+      <FofoControlPanel />
+      <Zetohubarchitecture />
+      <GetInTouch pageType="franchise" />
+      <Footer />
     </div>
   );
 }

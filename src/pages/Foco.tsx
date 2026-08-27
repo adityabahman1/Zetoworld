@@ -17,6 +17,8 @@ export function Advertising() {
       description="Partner with ZETO through the FOCO model — you bring the capital and the site, we bring the staff, systems, and day-to-day running."
       heroImage={adImg}
       heroImageAlt="Branded Zeto scooter fleet"
+      imagePosition="center"           // desktop stays exactly as it is now
+      mobileImagePosition="48% center"
     />
     <WhyChooseZetoFoco/>
     <Focoroiinvestment/>
