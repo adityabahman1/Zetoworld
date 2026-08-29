@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
 
+import dark from "../assets/ChatGPT Image Aug 29, 2026, 01_12_23 PM.png"
+
 interface RouteLink {
   label: string;
   to: string;
@@ -138,10 +140,17 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-1">
-              <span className="text-3xl font-bold tracking-tight text-[#1d7239]">
-                zeto
-              </span>
+            <Link to="/" className="flex items-center ml-8" aria-label="Zeto Home">
+              {/*
+               * Footer always sits on a light background, so it only
+               * ever needs the dark mark — no scroll/variant swap here.
+               */}
+              <img
+                src={dark}
+                alt="Zeto"
+                className="h-14 w-14 object-contain"
+              />
+              
             </Link>
 
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-800">

@@ -911,7 +911,7 @@ export default function Header({
         className="
           mx-auto
           flex
-          h-24
+          h-20
           max-w-7xl
           items-center
           justify-between
@@ -968,7 +968,7 @@ export default function Header({
               transition-colors
               duration-300
               ${useDarkText
-                ? "text-[#004D14]"
+                ? "text-[#1d7239]"
                 : "text-white drop-shadow-md"
               }
             `}
@@ -1025,7 +1025,7 @@ export default function Header({
                 rounded-full
                 border
                 px-6
-                py-3
+                py-2.5
                 text-sm
                 font-semibold
                 transition-all
@@ -1062,7 +1062,7 @@ export default function Header({
                 rounded-full
                 bg-[#1FA24A]
                 px-7
-                py-3
+                py-2.5
                 text-sm
                 font-semibold
                 text-white
