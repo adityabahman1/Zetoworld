@@ -9,6 +9,9 @@ import {
   X,
 } from "lucide-react";
 
+import dark from "../assets/ChatGPT Image Aug 29, 2026, 01_12_23 PM.png"
+import light from "../assets/ChatGPT Image Aug 29, 2026, 01_10_06 PM.png"
+
 interface DropdownChild {
   label: string;
   to: string;
@@ -908,12 +911,15 @@ export default function Header({
         className="
           mx-auto
           flex
-          h-20
+          h-24
           max-w-7xl
           items-center
           justify-between
-          px-6
+          px-8
           sm:px-10
+          lg:justify-center
+          lg:gap-20
+          xl:gap-28
         "
       >
         {/* =========================================================
@@ -930,10 +936,31 @@ export default function Header({
           className="
             flex
             items-center
+            gap-2
           "
           aria-label="Zeto Home"
         >
-          <span
+          {/*
+           * Mark swaps based on the same `useDarkText` flag that
+           * drives the text/nav colors, so it always stays legible:
+           *   useDarkText = true  -> header is white/light -> show the dark mark
+           *   useDarkText = false -> header is transparent over a dark hero -> show the light mark
+           */}
+
+          <img
+            src={useDarkText ? dark : light}
+            alt=""
+            aria-hidden="true"
+            className="
+              h-16
+              w-16
+              object-contain
+              transition-opacity
+              duration-300
+            "
+          />
+
+          {/* <span
             className={`
               text-4xl
               font-bold
@@ -941,118 +968,115 @@ export default function Header({
               transition-colors
               duration-300
               ${useDarkText
-                ? "text-[#1d7239]"
+                ? "text-[#004D14]"
                 : "text-white drop-shadow-md"
               }
             `}
           >
             zeto
-          </span>
+          </span> */}
         </Link>
 
         {/* =========================================================
-            DESKTOP NAVIGATION
+            DESKTOP NAVIGATION + CTA — grouped so they sit close
+            together on the right, instead of spreading apart
             ========================================================= */}
 
-        <nav
-          className="
-            hidden
-            items-center
-            gap-7
-            lg:flex
-            xl:gap-8
-          "
-          aria-label="Main Navigation"
-        >
-          {NAV_LINKS.map((link) =>
-            link.type === "dropdown"
-              ? renderDesktopDropdown(
-                link
-              )
-              : renderLink(
-                link,
-                active ===
-                link.label
-              )
-          )}
-        </nav>
-
-        {/* =========================================================
-            DESKTOP CTA
-            ========================================================= */}
-
-        <div
-          className="
-            hidden
-            items-center
-            gap-3
-            lg:flex
-          "
-        >
-          {/* Get App */}
-
-          <a
-            href={PLAY_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`
+        <div className="hidden items-center gap-12 lg:flex xl:gap-16">
+          <nav
+            className="
               flex
               items-center
-              gap-2
-              rounded-full
-              border
-              px-5
-              py-2.5
-              text-sm
-              font-semibold
-              transition-all
-              duration-300
-              ${useDarkText
-                ? `
-                      border-[#1FA24A]
-                      text-[#1FA24A]
-                      hover:bg-[#1FA24A]/10
-                    `
-                : `
-                      border-white/80
-                      text-white
-                      hover:bg-white/10
-                    `
-              }
-            `}
+              gap-6
+              xl:gap-8
+            "
+            aria-label="Main Navigation"
           >
-            <Smartphone size={16} />
+            {NAV_LINKS.map((link) =>
+              link.type === "dropdown"
+                ? renderDesktopDropdown(
+                  link
+                )
+                : renderLink(
+                  link,
+                  active ===
+                  link.label
+                )
+            )}
+          </nav>
 
-            Get the App
-          </a>
-
-          {/* Get Started */}
-
-          <Link
-            to="/contact"
-            onClick={() => {
-              setActive("Contact");
-              setMobileOpen(false);
-              setOpenDropdown(null);
-            }}
+          <div
             className="
-              rounded-full
-              bg-[#1FA24A]
-              px-6
-              py-2.5
-              text-sm
-              font-semibold
-              text-white
-              shadow-sm
-              transition-all
-              duration-300
-              hover:bg-[#188A3E]
-              hover:shadow-lg
-              hover:shadow-[#1FA24A]/20
+              flex
+              items-center
+              gap-4
             "
           >
-            Get Started
-          </Link>
+            {/* Get App */}
+
+            <a
+              href={PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`
+                flex
+                items-center
+                gap-2
+                rounded-full
+                border
+                px-6
+                py-3
+                text-sm
+                font-semibold
+                transition-all
+                duration-300
+                ${useDarkText
+                  ? `
+                        border-[#1FA24A]
+                        text-[#1FA24A]
+                        hover:bg-[#1FA24A]/10
+                      `
+                  : `
+                        border-white/80
+                        text-white
+                        hover:bg-white/10
+                      `
+                }
+              `}
+            >
+              <Smartphone size={16} />
+
+              Get the App
+            </a>
+
+            {/* Get Started */}
+
+            <Link
+              to="/contact"
+              onClick={() => {
+                setActive("Contact");
+                setMobileOpen(false);
+                setOpenDropdown(null);
+              }}
+              className="
+                rounded-full
+                bg-[#1FA24A]
+                px-7
+                py-3
+                text-sm
+                font-semibold
+                text-white
+                shadow-sm
+                transition-all
+                duration-300
+                hover:bg-[#188A3E]
+                hover:shadow-lg
+                hover:shadow-[#1FA24A]/20
+              "
+            >
+              Get Started
+            </Link>
+          </div>
         </div>
 
         {/* =========================================================
