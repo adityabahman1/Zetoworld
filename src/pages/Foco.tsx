@@ -22,7 +22,7 @@ export function Advertising() {
     />
     <WhyChooseZetoFoco/>
     <Focoroiinvestment/>
-    <GetInTouch pageType="franchise"/>
+    <GetInTouch pageType="foco"/>
     <Footer/>
     </div>
   );

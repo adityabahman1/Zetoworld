@@ -24,7 +24,7 @@ export function Fofo() {
       <FofoBenefitCards />
       <FofoControlPanel />
       <Zetohubarchitecture />
-      <GetInTouch pageType="franchise" />
+      <GetInTouch pageType="fofo" />
       <Footer />
     </div>
   );

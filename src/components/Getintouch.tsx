@@ -17,16 +17,28 @@ import {
 /* Reasons — now depend on which page the form is embedded in                 */
 /* -------------------------------------------------------------------------- */
 
-type PageType = "home" | "franchise" | "advertising" | "contact";
+type PageType = "home" | "foco" | "fofo" | "advertising" | "contact" | "battery";
 
 const REASONS_BY_PAGE: Record<PageType, readonly string[]> = {
   home: ["Join as Zeto Rider"],
-  franchise: ["Start a Franchise", "Investment Opportunity", "Fleet Partnership"],
-advertising: [
-  "Scooter Branding",
-  "Helmet Branding",
-],  contact :[    "General Inquiry",     "Join as Zeto Rider",    "Start a Franchise",     "Advertising",    "Support"]
+  battery: ["Battery Swap Partnership"],
+  foco: ["FOCO - Franchise Owned, Company Operated"],
+  fofo: ["FOFO - Franchise Owned, Franchise Operated"],
+  advertising: ["Scooter Branding", "Helmet Branding"],
+  contact: [
+    "General Inquiry",
+    "Join as Zeto Rider",
+    "FOCO Franchise",
+    "FOFO Franchise",
+    "Advertising",
+    "Battery Swap Partnership",
+    "Support",
+  ],
 };
+
+/** Pages that need the Fleet Size + Min Budget investment fields alongside
+ *  their (single, preselected) reason. */
+const FRANCHISE_PAGE_TYPES: readonly PageType[] = ["foco", "fofo"];
 
 const FLEET_SIZE_OPTIONS = [
   "Less than 10 Scooters",
@@ -83,7 +95,7 @@ const CONTACT_DETAILS = [
 ];
 
 const LEAD_ENDPOINT =
-  "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec";
+  "https://script.google.com/macros/s/AKfycbzZg70GlSt7NdqK3zRY5vw_T7bHElJO5j3NB5yptO7sa1EWVgRnQFoEZpAUGdeJiRVUmg/exec";
 
 /* -------------------------------------------------------------------------- */
 /* Rider Illustration                                                         */
@@ -161,12 +173,61 @@ const inputClass =
   "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-[#1FA24A] focus:ring-2 focus:ring-[#1FA24A]/10";
 
 /* -------------------------------------------------------------------------- */
+/* Reusable reason selector — used by every page. Single-option pages         */
+/* (home, battery) render one disabled, preselected pill. Multi-option pages  */
+/* (franchise, advertising, contact) render clickable pills.                  */
+/* -------------------------------------------------------------------------- */
+
+interface ReasonSelectorProps {
+  reasons: readonly string[];
+  selected: string | null;
+  isSingleReason: boolean;
+  onSelect: (reason: string) => void;
+}
+
+function ReasonSelector({ reasons, selected, isSingleReason, onSelect }: ReasonSelectorProps) {
+  return (
+    <div>
+      <label className="mb-2 block text-sm font-medium text-slate-700">
+        What would you like to discuss?
+        <span className="ml-1 text-[#1FA24A]">*</span>
+      </label>
+
+      <div className="flex flex-wrap gap-2">
+        {reasons.map((reason) => {
+          const isSelected = selected === reason;
+
+          return (
+            <button
+              key={reason}
+              type="button"
+              onClick={() => onSelect(reason)}
+              aria-pressed={isSelected}
+              disabled={isSingleReason}
+              className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
+                isSelected
+                  ? "border-[#1FA24A] bg-[#1FA24A] text-white"
+                  : "border-slate-200 bg-white text-slate-600 hover:border-[#1FA24A] hover:text-[#1FA24A]"
+              } ${isSingleReason ? "cursor-default" : ""}`}
+            >
+              {reason}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
 /* Main component                                                             */
 /* -------------------------------------------------------------------------- */
 
 interface GetInTouchProps {
   /** Which page this form is embedded on — controls which reasons are
-   *  offered. Defaults to "home" (single option: "Join as Zeto Rider"). */
+   *  offered. Defaults to "home" (single option: "Join as Zeto Rider").
+   *  "foco" and "fofo" are the two franchise-model pages, each with a
+   *  single preselected reason plus Fleet Size / Min Budget fields. */
   pageType?: PageType;
 }
 
@@ -202,15 +263,15 @@ export default function GetInTouch({ pageType = "home" }: GetInTouchProps) {
     if (!form.name.trim()) return "Please enter your full name.";
     if (!/^\d{10}$/.test(form.phone.trim())) return "Please enter a valid 10-digit mobile number.";
     if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) return "Please enter a valid email address.";
-if (pageType === "franchise") {
-  if (!form.fleetSize)
-    return "Please select the number of scooters.";
-  if (!form.minBudget.trim())
-    return "Please enter your minimum budget.";
-} else {
-  if (!form.reason)
-    return "Please select what you'd like to discuss.";
-}    if (!form.city.trim()) return "Please enter your city.";
+
+    if (FRANCHISE_PAGE_TYPES.includes(pageType)) {
+      if (!form.fleetSize) return "Please select the number of scooters.";
+      if (!form.minBudget.trim()) return "Please enter your minimum budget.";
+    } else {
+      if (!form.reason) return "Please select what you'd like to discuss.";
+    }
+
+    if (!form.city.trim()) return "Please enter your city.";
     if (!form.area.trim()) return "Please enter your area.";
     if (!/^\d{6}$/.test(form.pincode.trim())) return "Please enter a valid 6-digit pincode.";
     return null;
@@ -425,71 +486,59 @@ if (pageType === "franchise") {
               </div>
 
               {/* Reason — options come from REASONS_BY_PAGE[pageType].
-                  Home offers just one ("Join as Zeto Rider"), auto-selected
-                  and shown disabled so the person still sees what they're
-                  submitting for without needing to click it. */}
+                  home, battery, foco & fofo each offer just one option,
+                  auto-selected and shown disabled so the person still sees
+                  what they're submitting for without needing to click it.
+                  foco & fofo additionally show Fleet Size + Min Budget
+                  fields, since those franchise leads still need that
+                  investment context. */}
 
-                  {pageType === "franchise" ? (
-  <div className="grid gap-5 sm:grid-cols-2">
-    <Field label="Number of Scooters" icon={Building2}>
-      <select
-        value={form.fleetSize}
-        onChange={(e) => updateField("fleetSize", e.target.value)}
-        className={inputClass}
-      >
-        <option value="">Select number of scooters</option>
+              {FRANCHISE_PAGE_TYPES.includes(pageType) ? (
+                <>
+                  <ReasonSelector
+                    reasons={reasons}
+                    selected={form.reason}
+                    isSingleReason={isSingleReason}
+                    onSelect={(reason) => updateField("reason", reason)}
+                  />
 
-        {FLEET_SIZE_OPTIONS.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-    </Field>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label="Number of Scooters" icon={Building2}>
+                      <select
+                        value={form.fleetSize}
+                        onChange={(e) => updateField("fleetSize", e.target.value)}
+                        className={inputClass}
+                      >
+                        <option value="">Select number of scooters</option>
 
-    <Field label="Minimum Budget" icon={Banknote}>
-      <input
-        type="text"
-        inputMode="numeric"
-        value={form.minBudget}
-        onChange={(e) => updateField("minBudget", e.target.value)}
-        placeholder="e.g. ₹4,00,000"
-        className={inputClass}
-      />
-    </Field>
-  </div>
-) : (
-  <div>
-    <label className="mb-2 block text-sm font-medium text-slate-700">
-      What would you like to discuss?
-      <span className="ml-1 text-[#1FA24A]">*</span>
-    </label>
+                        {FLEET_SIZE_OPTIONS.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                    </Field>
 
-    <div className="flex flex-wrap gap-2">
-      {reasons.map((reason) => {
-        const selected = form.reason === reason;
-
-        return (
-          <button
-            key={reason}
-            type="button"
-            onClick={() => updateField("reason", reason)}
-            aria-pressed={selected}
-            disabled={isSingleReason}
-            className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
-              selected
-                ? "border-[#1FA24A] bg-[#1FA24A] text-white"
-                : "border-slate-200 bg-white text-slate-600 hover:border-[#1FA24A] hover:text-[#1FA24A]"
-            } ${isSingleReason ? "cursor-default" : ""}`}
-          >
-            {reason}
-          </button>
-        );
-      })}
-    </div>
-  </div>
-)}
-              
+                    <Field label="Minimum Budget" icon={Banknote}>
+                      <input
+                        type="text"
+                        inputMode="numeric"
+                        value={form.minBudget}
+                        onChange={(e) => updateField("minBudget", e.target.value)}
+                        placeholder="e.g. ₹4,00,000"
+                        className={inputClass}
+                      />
+                    </Field>
+                  </div>
+                </>
+              ) : (
+                <ReasonSelector
+                  reasons={reasons}
+                  selected={form.reason}
+                  isSingleReason={isSingleReason}
+                  onSelect={(reason) => updateField("reason", reason)}
+                />
+              )}
 
               <div className="grid gap-5 sm:grid-cols-3">
                 <Field label="City" icon={Building2}>

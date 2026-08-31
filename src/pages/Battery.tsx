@@ -29,7 +29,7 @@ export function Battery() {
       <SwappableBattery/>
       <SwapStationJourney/>
       <SwapStationFeatures/>
-      <GetInTouch pageType="contact" />
+      <GetInTouch pageType="battery" />
       <Footer />
     </div>
   );
