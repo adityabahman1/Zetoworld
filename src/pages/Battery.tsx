@@ -25,7 +25,7 @@ export function Battery() {
         <meta property="og:title" content="Battery Swap Stations in Punjab | Zeto" />
         <meta property="og:description" content="See Zeto's full battery-swap rollout map across Punjab's cities." />
         <meta property="og:image" content={`${SITE_URL}${banner}`} />
-        <meta property="og:url" content={`${SITE_URL}/contact`} />
+        <meta property="og:url" content={`${SITE_URL}/battery`} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
     <div className="min-h-screen bg-white">
