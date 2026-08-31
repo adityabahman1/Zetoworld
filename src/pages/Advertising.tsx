@@ -22,7 +22,7 @@ export function Advertising() {
         <meta property="og:title" content="Advertise on Zeto Scooters | Brand Visibility Across Punjab" />
         <meta property="og:description" content="Put your brand on Zeto's growing electric scooter fleet across Punjab." />
         <meta property="og:image" content={`${SITE_URL}${banner}`} />
-        <meta property="og:url" content={`${SITE_URL}/contact`} />
+        <meta property="og:url" content={`${SITE_URL}/advertising`} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
     <div>
