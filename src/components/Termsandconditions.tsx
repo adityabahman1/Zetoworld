@@ -13,7 +13,8 @@ import {
   Landmark,
   Mail,
 } from "lucide-react";
-
+import { Head } from "vite-react-ssg";
+import { SITE_URL } from "../constants/site";
 /* -------------------------------------------------------------------------- */
 /* Content model                                                              */
 /* -------------------------------------------------------------------------- */
@@ -150,6 +151,13 @@ const SECTIONS: Section[] = [
 
 export default function TermsAndConditions() {
   return (
+    <>
+    <Head>
+        <title>Terms & Conditions | Zeto</title>
+        <meta name="description" content="Read the terms and conditions governing use of Zeto's electric scooter rental and battery-swap services." />
+        <link rel="canonical" href={`${SITE_URL}/terms-conditons`} />
+        <meta name="robots" content="noindex, follow" />
+      </Head>
     <section className="bg-white px-6 py-20 sm:px-10 lg:py-28">
       <div className="mx-auto max-w-4xl">
         {/* ================= HEADER ================= */}
@@ -277,5 +285,6 @@ export default function TermsAndConditions() {
         </div>
       </div>
     </section>
+    </>
   );
 }
