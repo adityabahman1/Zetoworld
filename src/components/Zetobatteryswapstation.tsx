@@ -14,7 +14,7 @@ import {
  * - Palette: light green theme — white base, soft mint surfaces, a fresh
  *   green (#2F8F4E) as the primary accent and a lime green (#8BC34A) as
  *   the secondary "charged" accent.
- * - Display face: Space Grotesk (mechanical, technical). Body: Inter.
+ * - Display face: Plus Jakarta Sans (clean, modern, friendly). Body: Inter.
  * - Signature element: an animated battery swap — a depleted pack slides
  *   out on the left, a full pack slides in on the right, charge bar fills.
  */
@@ -70,8 +70,8 @@ export default function ZetoBatterySwapStation() {
       className="w-full bg-[var(--zeto-bg)] text-[var(--zeto-ink)] font-[Inter,ui-sans-serif,system-ui] antialiased"
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
-        .zeto-display { font-family: 'Space Grotesk', ui-sans-serif, system-ui; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+        .zeto-display { font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui; }
         @media (prefers-reduced-motion: reduce) {
           .zeto-anim { transition: none !important; animation: none !important; }
         }
@@ -79,7 +79,7 @@ export default function ZetoBatterySwapStation() {
 
       {/* ---------------- HERO ---------------- */}
       <section className="relative overflow-hidden border-b border-[var(--zeto-line)]">
-        <div className="max-w-[50.4rem] pl-8 md:pl-16 pr-6 md:pr-10 pt-16 pb-14 md:pt-24 md:pb-20">
+        <div className="max-w-[72rem] mx-auto px-6 md:px-10 pt-16 pb-14 md:pt-24 md:pb-20 flex flex-col items-center text-center">
           <div className="flex items-center gap-2 mb-6">
             <Zap size={16} className="text-[var(--zeto-primary)]" />
             <span className="zeto-display text-xs tracking-[0.2em] uppercase text-[var(--zeto-primary)]">
@@ -87,20 +87,20 @@ export default function ZetoBatterySwapStation() {
             </span>
           </div>
 
-          <h1 className="zeto-display text-4xl md:text-6xl leading-[1.05] font-semibold max-w-3xl">
+          <h1 className="zeto-display text-4xl md:text-6xl leading-[1.05] font-semibold w-full">
             Charging takes an hour.
             <br />
             <span className="text-[var(--zeto-ink-dim)]">Swapping takes a stoplight.</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-[15px] md:text-base leading-relaxed text-[var(--zeto-ink-dim)]">
+          <p className="mt-6 max-w-3xl text-[15px] md:text-lg leading-relaxed text-[var(--zeto-ink-dim)]">
             Zeto stations let electric two- and three-wheelers trade a
             depleted battery for a fully charged one in under 90 seconds —
             so riders spend their day moving, not waiting at a plug.
           </p>
 
           {/* Signature element: animated swap visual */}
-          <div className="mt-12 rounded-2xl border border-[var(--zeto-line)] bg-[var(--zeto-surface)] p-6 md:p-6">
+          <div className="mt-12 w-full rounded-2xl border border-[var(--zeto-line)] bg-[var(--zeto-surface)] p-6 md:p-6">
             <div className="flex items-center justify-between gap-4 md:gap-10">
               {/* outgoing depleted battery */}
               <div className="flex-1 flex flex-col items-center gap-3">
@@ -152,7 +152,7 @@ export default function ZetoBatterySwapStation() {
 
       {/* ---------------- STATS ---------------- */}
       <section className="border-b border-[var(--zeto-line)]">
-        <div className="max-w-[72rem] pl-8 md:pl-16 pr-6 md:pr-10 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-[72rem] mx-auto px-6 md:px-10 py-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {STATS.map((s) => (
             <div key={s.label}>
               <div className="zeto-display text-2xl md:text-3xl text-[var(--zeto-primary)]">
@@ -168,9 +168,9 @@ export default function ZetoBatterySwapStation() {
 
       {/* ---------------- BENEFITS ---------------- */}
       <section>
-        <div className="max-w-[72rem] pl-8 md:pl-16 pr-6 md:pr-10 py-14 grid gap-10 md:grid-cols-3">
+        <div className="max-w-[72rem] mx-auto px-6 md:px-10 py-14 grid gap-10 md:grid-cols-3 text-center">
           {BENEFITS.map(({ icon: Icon, title, body }) => (
-            <div key={title} className="flex flex-col gap-3">
+            <div key={title} className="flex flex-col items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--zeto-surface-2)]">
                 <Icon size={18} className="text-[var(--zeto-primary)]" />
               </div>
