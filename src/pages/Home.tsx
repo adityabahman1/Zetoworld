@@ -33,7 +33,7 @@ export default function Home() {
       <HeroCommon
         title="Ride Electric"
         highlight="Earn Smarter"
-        description=" ZETO enables delivery partners to earn more with lower operating costs, helping build cleaner cities , stronger communities."
+        description=" ZETO is building a cleaner delivery network across Tricity, empowering EV riders and supporting greener urban mobility."
         heroImage={banner}
         heroImageAlt="Zeto rider on an electric scooter"
         imagePosition="center"           // desktop stays exactly as it is now
