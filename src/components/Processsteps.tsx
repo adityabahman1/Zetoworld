@@ -36,9 +36,15 @@ const STEPS: Step[] = [
 export default function ProcessSteps() {
   return (
     <section className=" px-6 py-20">
+      <div className="flex items-center justify-center mb-16">
+      <h1 className="text-4xl font-extrabold text-slate-900 sm:text-4xl">
+        Get Started. Start Earning.
+      </h1>
+      </div>
       <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-2">
         {/* Image placeholder — swap for a screenshot/mockup of the actual
             Zeto app sign-up or plan-selection screen. */}
+
         <div className="overflow-hidden rounded-2xl">
           <img
             src={img1}
@@ -49,7 +55,7 @@ export default function ProcessSteps() {
 
         {/* Steps */}
         <div>
-          <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+          <h2 className="text-3xl font-extrabold text-slate-900 sm:text-3xl">
             Simple 3-Step Process
           </h2>
           <p className="mt-4 max-w-md text-slate-500">
