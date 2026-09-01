@@ -82,7 +82,7 @@ const allocation = [
 
 const moneyFlow = [
   { icon: Icon.Wallet, title: "You Invest", text: "Minimum ₹4 Lakh secures your 10-scooter fleet." },
-  { icon: Icon.Growth, title: "Fleet Earns", text: "Zeto operates the scooters and generates daily rider revenue." },
+  { icon: Icon.Growth, title: "Zeto Operates", text: "Zeto operates the scooters and generates rider revenue." },
   { icon: Icon.Rupee, title: "Monthly Payout", text: "Your share of earnings is paid out on a fixed monthly cycle." },
   { icon: Icon.Repeat, title: "Reinvest & Scale", text: "Roll payouts back in to add scooters and grow beyond 10." },
 ];
@@ -448,28 +448,7 @@ export default function FocoRoiInvestment() {
           ))}
         </div>
 
-        <div className="roi-flow-label">
-          <span>Where Your Investment Goes</span>
-          <div className="roi-flow-line" />
-        </div>
-
-        <div className="roi-panel">
-          {allocation.map((a) => (
-            <div className="roi-allocation-row" key={a.label}>
-              <span className="roi-allocation-icon">
-                <a.icon size={17} />
-              </span>
-              <div>
-                <div className="roi-allocation-label">{a.label}</div>
-                <div className="roi-allocation-note">{a.note}</div>
-                <div className="roi-allocation-bar-wrap">
-                  <div className="roi-allocation-bar" style={{ width: `${a.pct}%` }} />
-                </div>
-              </div>
-              <span className="roi-allocation-pct">{a.pct}%</span>
-            </div>
-          ))}
-        </div>
+        
 
         <div className="roi-flow-label">
           <span>How Returns Reach You</span>

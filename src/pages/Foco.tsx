@@ -7,6 +7,7 @@ import WhyChooseZetoFoco from "../components/Whychoosezetofoco";
 import Focoroiinvestment from "../components/Focoroiinvestment";
 import { Head } from "vite-react-ssg";
 import { SITE_URL } from "../constants/site";
+import ZetoRoiCalculator from "../components/ZetoRoiCalculator";
 
 const banner = "/hero-banner-foco.jpeg"
 
@@ -37,6 +38,7 @@ export function Advertising() {
     />
     <WhyChooseZetoFoco/>
     <Focoroiinvestment/>
+    <ZetoRoiCalculator/>
     <GetInTouch pageType="foco"/>
     <Footer/>
     </div>
