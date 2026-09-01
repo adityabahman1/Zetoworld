@@ -74,11 +74,6 @@ const investmentSnapshot = [
   { icon: Icon.Clock, label: "Payout Cycle", value: "Monthly" },
 ];
 
-const allocation = [
-  { icon: Icon.Scooter, label: "Scooter Fleet", note: "10 e-scooters, onboarded & branded", pct: 65 },
-  { icon: Icon.Shield, label: "Security Deposit", note: "Refundable operating deposit held with Zeto", pct: 20 },
-  { icon: Icon.Tools, label: "Setup & Onboarding", note: "Hub tie-up, KYC systems, initial servicing", pct: 15 },
-];
 
 const moneyFlow = [
   { icon: Icon.Wallet, title: "You Invest", text: "Minimum ₹4 Lakh secures your 10-scooter fleet." },

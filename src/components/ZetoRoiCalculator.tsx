@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from "react";
-import { ArrowUpDown, Calendar, ImagePlus, Minus, Plus, TrendingUp, Wallet } from "lucide-react";
+import { ArrowUpDown, Calendar,  Minus, Plus, TrendingUp, Wallet } from "lucide-react";
 import img from "../assets/ChatGPT Image Sep 1, 2026, 04_58_03 PM.png"
 /**
  * Zeto ROI Calculator
