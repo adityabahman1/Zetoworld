@@ -31,17 +31,17 @@ export default function Home() {
     <div className="min-h-screen bg-white font-sans">
       <Header variant="dark" />
       <HeroCommon
-        title="Cutting Emission"
-        highlight="Creating Jobs"
-        description="ZETO is building a sustainable delivery ecosystem that reduces pollution and empowers communities with meaningful job opportunities."
+        title="Ride Electric"
+        highlight="Earn Smarter"
+        description=" ZETO enables delivery partners to earn more with lower operating costs, helping build cleaner cities , stronger communities."
         heroImage={banner}
         heroImageAlt="Zeto rider on an electric scooter"
         imagePosition="center"           // desktop stays exactly as it is now
         mobileImagePosition="85% center" // shifts the mobile crop right, toward the rider
       />
       <WhyChooseZeto />
-      <Missiondashboard />
       <ProcessSteps />
+      <Missiondashboard />
       <Cityroute />
       <JoinCommunity />
       <Partners />

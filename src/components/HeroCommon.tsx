@@ -68,8 +68,7 @@ export default function HeroCommon({
   const resolvedMobilePosition = mobileImagePosition ?? imagePosition;
 
   return (
-    <section className="relative isolate flex h-[100dvh] min-h-[480px] max-h-[880px] w-full items-center overflow-hidden">
-      <style>{`
+    <section className="relative isolate flex h-screen h-[100dvh] min-h-[520px] w-full items-center overflow-hidden">      <style>{`
         @keyframes hc-fade-up {
           from { opacity: 0; transform: translateY(14px); }
           to   { opacity: 1; transform: translateY(0); }
