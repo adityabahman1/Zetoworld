@@ -1,4 +1,5 @@
-import img from "../assets/ChatGPT Image Aug 27, 2026, 03_27_56 PM.png"
+import problemImg from "../assets/ChatGPT Image Sep 2, 2026, 02_55_19 PM.png"
+import solutionImg from "../assets/ChatGPT Image Sep 2, 2026, 02_44_10 PM.png"
 
 type IconProps = {
     size?: number;
@@ -174,9 +175,30 @@ export default function ZetoMovingBillboardsSection() {
         .zeto-grid {
           position: relative;
           display: grid;
-          grid-template-columns: minmax(0, .92fr) minmax(0, 1.28fr);
+          grid-template-columns: 1fr;
+        }
+
+        .zeto-image-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
           gap: clamp(22px, 4vw, 58px);
-          align-items: stretch;
+          align-items: start;
+          margin-bottom: clamp(22px, 4vw, 58px);
+        }
+
+        .zeto-row-img {
+          width: 100%;
+          /* Fixed, shared height so both cards read as the same size even
+             though the source images have different native aspect ratios
+             (the problem graphic is square, the solution one is 3:2). Uses
+             object-fit: contain rather than cover so neither image gets
+             cropped — both are text-baked-in infographics, not photos. */
+          height: clamp(260px, 30vw, 380px);
+          object-fit: contain;
+        
+          display: block;
+        
+      
         }
 
         .zeto-card {
@@ -587,7 +609,7 @@ export default function ZetoMovingBillboardsSection() {
         @media (max-width: 900px) {
           .zeto-header { flex-direction: column; }
           .zeto-brand { align-self: flex-start; }
-          .zeto-grid { grid-template-columns: 1fr; }
+          .zeto-image-row { grid-template-columns: 1fr; }
           .zeto-connector { display: none; }
           .zeto-card { min-height: 430px; }
         }
@@ -633,10 +655,18 @@ export default function ZetoMovingBillboardsSection() {
 
                 <div className="zeto-grid">
 
-                    <div className="rounded-[20px] overflow-hidden">
-                        <img src={img} alt="" />
+                    <div className="zeto-image-row">
+                        <img
+                            src={problemImg}
+                            alt="The problem with traditional billboards: static, limited locations, high cost, no audience tracking"
+                            className="zeto-row-img"
+                        />
+                        <img
+                            src={solutionImg}
+                            alt="Brand on the move: high visibility, cost-effective, build trust — Zeto scooter ad"
+                            className="zeto-row-img"
+                        />
                     </div>
-
 
                     <article className="zeto-card zeto-solution">
                         <div className="zeto-card-title">
@@ -653,7 +683,7 @@ export default function ZetoMovingBillboardsSection() {
                             </div>
 
                             <div className="zeto-locations">
-                                {["Chandigarh", "Mohali", "Panchkula"].map((location) => (
+                                {["Chandigarh", "Mohali", "Panchkula","Zirakpur"].map((location) => (
                                     <span className="zeto-location" key={location}>
                                         <Icon.MapPin size={14} />
                                         {location}
