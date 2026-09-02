@@ -31,8 +31,8 @@ export default function Home() {
     <div className="min-h-screen bg-white font-sans">
       <Header variant="dark" />
       <HeroCommon
-        title="Ride Electric"
-        highlight="Earn Smarter"
+        title="Cutting Emissions"
+        highlight="Creating Jobs"
         description=" ZETO is building a cleaner delivery network across Tricity, empowering EV riders and supporting greener urban mobility."
         heroImage={banner}
         heroImageAlt="Zeto rider on an electric scooter"
