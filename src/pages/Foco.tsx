@@ -8,6 +8,8 @@ import Focoroiinvestment from "../components/Focoroiinvestment";
 import { Head } from "vite-react-ssg";
 import { SITE_URL } from "../constants/site";
 import ZetoRoiCalculator from "../components/ZetoRoiCalculator";
+import Cityroute from "../components/Cityroute";
+import FocoOwnerSupport from "../components/Focoownersupport";
 
 const banner = "/hero-banner-foco.jpeg"
 
@@ -37,8 +39,10 @@ export function Advertising() {
       mobileImagePosition="48% center"
     />
     <WhyChooseZetoFoco/>
-    <Focoroiinvestment/>
     <ZetoRoiCalculator/>
+    <FocoOwnerSupport/>
+    <Focoroiinvestment/>
+    <Cityroute />
     <GetInTouch pageType="foco"/>
     <Footer/>
     </div>

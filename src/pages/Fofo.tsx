@@ -8,6 +8,8 @@ import FofoBenefitCards from "../components/Fofobenefitcards";
 import Zetohubarchitecture from "../components/Zetohubarchitecture";
 import { Head } from "vite-react-ssg";
 import { SITE_URL } from "../constants/site";
+import ZetoOnboardingTimeline from "../components/Zetoonboardingtimeline";
+import Cityroute from "../components/Cityroute";
 
 const banner = "/hero-banner-fofo.jpeg"
 
@@ -37,8 +39,10 @@ export function Fofo() {
         mobileImagePosition="50% center"
       />
       <FofoBenefitCards />
+      <ZetoOnboardingTimeline/>
       <FofoControlPanel />
       <Zetohubarchitecture />
+      <Cityroute />
       <GetInTouch pageType="fofo" />
       <Footer />
     </div>

@@ -1,4 +1,5 @@
 
+import { useEffect, useRef, useState, type ReactElement } from "react";
 import img from "../assets/WhatsApp Image 2026-08-24 at 10.27.45 PM.jpeg"
 
 type IconProps = {
@@ -114,6 +115,60 @@ const flowLegend = [
 ];
 
 const principles = ["Rider First", "Safe Rides", "Smart Mobility", "Zero Emission"];
+
+type Zone = { icon: (props: IconProps) => ReactElement; title: string; text: string };
+
+function ZoneTrack({ zones, className }: { zones: Zone[]; className?: string }) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const handleScroll = () => {
+      const index = Math.round(track.scrollLeft / track.clientWidth);
+      setActiveIndex(Math.min(Math.max(index, 0), zones.length - 1));
+    };
+
+    track.addEventListener("scroll", handleScroll, { passive: true });
+    return () => track.removeEventListener("scroll", handleScroll);
+  }, [zones.length]);
+
+  const scrollToZone = (index: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollTo({ left: index * track.clientWidth, behavior: "smooth" });
+  };
+
+  return (
+    <>
+      <div className={`hub-zones${className ? ` ${className}` : ""}`} ref={trackRef}>
+        {zones.map((z) => (
+          <div className="hub-zone" key={z.title}>
+            <span className="hub-zone-icon">
+              <z.icon size={19} />
+            </span>
+            <div className="hub-zone-title">{z.title}</div>
+            <div className="hub-zone-text">{z.text}</div>
+          </div>
+        ))}
+      </div>
+      <div className="hub-zone-dots">
+        {zones.map((z, index) => (
+          <button
+            key={z.title}
+            type="button"
+            aria-label={`Show ${z.title}`}
+            aria-current={index === activeIndex}
+            className={`hub-zone-dot${index === activeIndex ? " active" : ""}`}
+            onClick={() => scrollToZone(index)}
+          />
+        ))}
+      </div>
+    </>
+  );
+}
 
 export default function ZetoHubArchitecture() {
   return (
@@ -334,6 +389,30 @@ export default function ZetoHubArchitecture() {
           color: var(--muted);
         }
 
+        .hub-zone-dots {
+          display: none;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          margin-top: 14px;
+        }
+
+        .hub-zone-dot {
+          width: 7px;
+          height: 7px;
+          padding: 0;
+          border: none;
+          border-radius: 999px;
+          background: var(--tint-200);
+          cursor: pointer;
+          transition: width .2s ease, background .2s ease;
+        }
+
+        .hub-zone-dot.active {
+          width: 22px;
+          background: var(--green);
+        }
+
         .hub-principles {
           margin-top: 26px;
           padding-top: 22px;
@@ -369,7 +448,21 @@ export default function ZetoHubArchitecture() {
         @media (max-width: 620px) {
           .hub-header { flex-direction: column; }
           .hub-brand { align-self: flex-start; }
-          .hub-zones { grid-template-columns: 1fr; }
+          .hub-zones {
+            display: flex;
+            grid-template-columns: none;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          .hub-zones::-webkit-scrollbar { display: none; }
+          .hub-zone {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+          }
+          .hub-zone-dots { display: flex; }
           .hub-principle { min-width: 100%; }
         }
       `}</style>
@@ -415,34 +508,14 @@ export default function ZetoHubArchitecture() {
           <div className="hub-flow-line" />
         </div>
 
-        <div className="hub-zones">
-          {riderZones.map((z) => (
-            <div className="hub-zone" key={z.title}>
-              <span className="hub-zone-icon">
-                <z.icon size={19} />
-              </span>
-              <div className="hub-zone-title">{z.title}</div>
-              <div className="hub-zone-text">{z.text}</div>
-            </div>
-          ))}
-        </div>
+        <ZoneTrack zones={riderZones} />
 
         <div className="hub-flow-label" style={{ marginTop: 24 }}>
           <span>Fleet & Backend</span>
           <div className="hub-flow-line" />
         </div>
 
-        <div className="hub-zones backend">
-          {backendZones.map((z) => (
-            <div className="hub-zone" key={z.title}>
-              <span className="hub-zone-icon">
-                <z.icon size={19} />
-              </span>
-              <div className="hub-zone-title">{z.title}</div>
-              <div className="hub-zone-text">{z.text}</div>
-            </div>
-          ))}
-        </div>
+        <ZoneTrack zones={backendZones} className="backend" />
 
         <div className="hub-principles">
           {principles.map((p) => (

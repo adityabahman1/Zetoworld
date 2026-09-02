@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+/* Hides scrollbars on horizontally-scrollable mobile card rows while keeping them scrollable. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

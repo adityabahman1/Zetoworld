@@ -3,14 +3,10 @@ import {
   Phone,
   Mail,
   MapPin,
-  User,
-  Building2,
-  Hash,
   Loader2,
   CheckCircle2,
   ArrowRight,
   Sparkles,
-  Banknote,
 } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
@@ -147,22 +143,14 @@ function RiderIllustration() {
 
 interface FieldProps {
   label: string;
-  icon: React.ElementType;
   children: React.ReactNode;
-  required?: boolean;
 }
 
-function Field({ label, icon: Icon, children, required = true }: FieldProps) {
+function Field({ label, children }: FieldProps) {
   return (
     <div>
-      <label className="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-slate-700">
-        <Icon size={14} className="text-[#1FA24A]" />
+      <label className="mb-1.5 block text-sm font-medium text-slate-700">
         {label}
-        {required && (
-          <span className="text-[#1FA24A]" aria-hidden="true">
-            *
-          </span>
-        )}
       </label>
       {children}
     </div>
@@ -190,7 +178,6 @@ function ReasonSelector({ reasons, selected, isSingleReason, onSelect }: ReasonS
     <div>
       <label className="mb-2 block text-sm font-medium text-slate-700">
         What would you like to discuss?
-        <span className="ml-1 text-[#1FA24A]">*</span>
       </label>
 
       <div className="flex flex-wrap gap-2">
@@ -441,7 +428,7 @@ export default function GetInTouch({ pageType = "home" }: GetInTouchProps) {
                 </p>
               </div>
 
-              <Field label="Full name" icon={User}>
+              <Field label="Full name">
                 <input
                   type="text"
                   autoComplete="name"
@@ -453,7 +440,7 @@ export default function GetInTouch({ pageType = "home" }: GetInTouchProps) {
               </Field>
 
               <div className="grid gap-5 sm:grid-cols-2">
-                <Field label="Phone number" icon={Phone}>
+                <Field label="Phone number">
                   <div className="flex overflow-hidden rounded-xl border border-slate-200 bg-white transition focus-within:border-[#1FA24A] focus-within:ring-2 focus-within:ring-[#1FA24A]/10">
                     <span className="flex items-center border-r border-slate-200 px-3 text-sm font-medium text-slate-500">
                       +91
@@ -473,7 +460,7 @@ export default function GetInTouch({ pageType = "home" }: GetInTouchProps) {
                   </div>
                 </Field>
 
-                <Field label="Email address" icon={Mail}>
+                <Field label="Email address">
                   <input
                     type="email"
                     autoComplete="email"
@@ -503,7 +490,7 @@ export default function GetInTouch({ pageType = "home" }: GetInTouchProps) {
                   />
 
                   <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Number of Scooters" icon={Building2}>
+                    <Field label="Number of Scooters">
                       <select
                         value={form.fleetSize}
                         onChange={(e) => updateField("fleetSize", e.target.value)}
@@ -519,7 +506,7 @@ export default function GetInTouch({ pageType = "home" }: GetInTouchProps) {
                       </select>
                     </Field>
 
-                    <Field label="Minimum Budget" icon={Banknote}>
+                    <Field label="Minimum Budget">
                       <input
                         type="text"
                         inputMode="numeric"
@@ -541,7 +528,7 @@ export default function GetInTouch({ pageType = "home" }: GetInTouchProps) {
               )}
 
               <div className="grid gap-5 sm:grid-cols-3">
-                <Field label="City" icon={Building2}>
+                <Field label="City">
                   <input
                     type="text"
                     autoComplete="address-level2"
@@ -552,7 +539,7 @@ export default function GetInTouch({ pageType = "home" }: GetInTouchProps) {
                   />
                 </Field>
 
-                <Field label="Area" icon={MapPin}>
+                <Field label="Area">
                   <input
                     type="text"
                     autoComplete="address-line1"
@@ -563,7 +550,7 @@ export default function GetInTouch({ pageType = "home" }: GetInTouchProps) {
                   />
                 </Field>
 
-                <Field label="Pincode" icon={Hash}>
+                <Field label="Pincode">
                   <input
                     type="text"
                     inputMode="numeric"

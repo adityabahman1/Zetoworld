@@ -1,4 +1,4 @@
-
+import { useEffect, useRef, useState, type ReactElement } from "react";
 
 type IconProps = {
   size?: number;
@@ -81,6 +81,63 @@ const moneyFlow = [
   { icon: Icon.Rupee, title: "Monthly Payout", text: "Your share of earnings is paid out on a fixed monthly cycle." },
   { icon: Icon.Repeat, title: "Reinvest & Scale", text: "Roll payouts back in to add scooters and grow beyond 10." },
 ];
+
+// Renders `items` in `trackClassName` (a grid on desktop, a horizontally
+// scrollable snap-track on mobile via the .roi-snapshot/.roi-flow-grid
+// mobile media query below) plus a row of dots underneath for the mobile
+// carousel. Shared between the investment snapshot stats and the money-flow
+// steps so both grids get the same one-card-at-a-time mobile behavior.
+function CarouselTrack<T>({
+  items,
+  trackClassName,
+  renderItem,
+}: {
+  items: T[];
+  trackClassName: string;
+  renderItem: (item: T, index: number) => ReactElement;
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const handleScroll = () => {
+      const index = Math.round(track.scrollLeft / track.clientWidth);
+      setActiveIndex(Math.min(Math.max(index, 0), items.length - 1));
+    };
+
+    track.addEventListener("scroll", handleScroll, { passive: true });
+    return () => track.removeEventListener("scroll", handleScroll);
+  }, [items.length]);
+
+  const scrollToItem = (index: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollTo({ left: index * track.clientWidth, behavior: "smooth" });
+  };
+
+  return (
+    <>
+      <div className={trackClassName} ref={trackRef}>
+        {items.map((item, index) => renderItem(item, index))}
+      </div>
+      <div className="roi-dots">
+        {items.map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            aria-label={`Show item ${index + 1} of ${items.length}`}
+            aria-current={index === activeIndex}
+            className={`roi-dot${index === activeIndex ? " active" : ""}`}
+            onClick={() => scrollToItem(index)}
+          />
+        ))}
+      </div>
+    </>
+  );
+}
 
 export default function FocoRoiInvestment() {
   return (
@@ -391,6 +448,30 @@ export default function FocoRoiInvestment() {
           color: #8a9c92;
         }
 
+        .roi-dots {
+          display: none;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          margin: 14px 0 30px;
+        }
+
+        .roi-dot {
+          width: 7px;
+          height: 7px;
+          padding: 0;
+          border: none;
+          border-radius: 999px;
+          background: var(--line);
+          cursor: pointer;
+          transition: width .2s ease, background .2s ease;
+        }
+
+        .roi-dot.active {
+          width: 22px;
+          background: var(--green);
+        }
+
         @media (max-width: 900px) {
           .roi-snapshot { grid-template-columns: repeat(2, 1fr); }
           .roi-flow-grid { grid-template-columns: repeat(2, 1fr); }
@@ -400,8 +481,23 @@ export default function FocoRoiInvestment() {
         @media (max-width: 620px) {
           .roi-header { flex-direction: column; }
           .roi-brand { align-self: flex-start; }
-          .roi-snapshot { grid-template-columns: 1fr; }
-          .roi-flow-grid { grid-template-columns: 1fr; }
+          .roi-snapshot, .roi-flow-grid {
+            display: flex;
+            grid-template-columns: none;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            margin-bottom: 0;
+          }
+          .roi-snapshot::-webkit-scrollbar, .roi-flow-grid::-webkit-scrollbar { display: none; }
+          .roi-stat, .roi-flow-step {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+          }
+          .roi-snapshot + .roi-dots { margin-bottom: 30px; }
+          .roi-dots { display: flex; }
           .roi-allocation-row { grid-template-columns: 30px 1fr; }
           .roi-allocation-pct {
             grid-column: 2;
@@ -429,8 +525,10 @@ export default function FocoRoiInvestment() {
         
         </header>
 
-        <div className="roi-snapshot">
-          {investmentSnapshot.map((s) => (
+        <CarouselTrack
+          items={investmentSnapshot}
+          trackClassName="roi-snapshot"
+          renderItem={(s) => (
             <div className="roi-stat" key={s.label}>
               <span className="roi-stat-icon">
                 <s.icon size={19} />
@@ -440,8 +538,8 @@ export default function FocoRoiInvestment() {
                 <div className="roi-stat-value">{s.value}</div>
               </div>
             </div>
-          ))}
-        </div>
+          )}
+        />
 
         
 
@@ -450,8 +548,10 @@ export default function FocoRoiInvestment() {
           <div className="roi-flow-line" />
         </div>
 
-        <div className="roi-flow-grid">
-          {moneyFlow.map((step, i) => (
+        <CarouselTrack
+          items={moneyFlow}
+          trackClassName="roi-flow-grid"
+          renderItem={(step, i) => (
             <div className="roi-flow-step" key={step.title}>
               <span className="roi-flow-icon">
                 <step.icon size={20} />
@@ -464,8 +564,8 @@ export default function FocoRoiInvestment() {
                 </span>
               )}
             </div>
-          ))}
-        </div>
+          )}
+        />
 
        
       </div>

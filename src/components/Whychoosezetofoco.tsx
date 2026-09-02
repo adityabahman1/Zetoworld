@@ -1,5 +1,6 @@
 // src/components/WhyChooseZetoFoco.tsx
 
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   Banknote,
@@ -58,6 +59,28 @@ const REASONS: Reason[] = [
 ];
 
 export default function WhyChooseZetoFoco() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const handleScroll = () => {
+      const index = Math.round(track.scrollLeft / track.clientWidth);
+      setActiveIndex(Math.min(Math.max(index, 0), REASONS.length - 1));
+    };
+
+    track.addEventListener("scroll", handleScroll, { passive: true });
+    return () => track.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToCard = (index: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollTo({ left: index * track.clientWidth, behavior: "smooth" });
+  };
+
   return (
     <section
       className="
@@ -232,12 +255,19 @@ export default function WhyChooseZetoFoco() {
             ===================================================== */}
 
         <div
+          ref={trackRef}
           className="
+            no-scrollbar
             mt-14
-            grid
-            grid-cols-1
-            gap-6
+            flex
+            snap-x
+            snap-mandatory
+            gap-0
+            overflow-x-auto
+            sm:grid
             sm:grid-cols-2
+            sm:gap-6
+            sm:overflow-visible
             lg:grid-cols-4
           "
         >
@@ -251,6 +281,9 @@ export default function WhyChooseZetoFoco() {
                   group
                   relative
                   flex
+                  w-full
+                  shrink-0
+                  snap-center
                   flex-col
                   overflow-hidden
                   rounded-2xl
@@ -340,6 +373,27 @@ export default function WhyChooseZetoFoco() {
               </div>
             );
           })}
+        </div>
+
+        {/* =====================================================
+            SCROLL DOTS (mobile only)
+            ===================================================== */}
+
+        <div className="mt-6 flex justify-center gap-2 sm:hidden">
+          {REASONS.map((reason, index) => (
+            <button
+              key={reason.title}
+              type="button"
+              aria-label={`Show card ${index + 1} of ${REASONS.length}`}
+              aria-current={index === activeIndex}
+              onClick={() => scrollToCard(index)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                index === activeIndex
+                  ? "w-6 bg-[#1FA24A]"
+                  : "w-1.5 bg-slate-200"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
