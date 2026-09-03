@@ -128,11 +128,10 @@ export default function FofoBenefitCards() {
               sm:text-4xl
             "
           >
-            Built for owners who want the wheel          </h2>
+            Built for Entrepreneurs Who Want Full Control         </h2>
 
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-500">
-            FOFO is designed for partners who want to own, manage, and grow their ZETO business with greater operational independence.
-          </p>
+            FOFO is designed for partners who want to own, manage, and grow their ZETO business with greater operational independence.          </p>
         </div>
 
         {/* =====================================================
