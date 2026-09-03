@@ -490,6 +490,7 @@ export default function ZetoHubArchitecture() {
           <img
             src={img}
             alt="Isometric layout of a Zeto Hub showing rider flow from entry and KYC through allotment, and scooter flow through service, battery safety, spare parts and RFA inventory to exit"
+            loading="lazy"
           />
         </div>
 

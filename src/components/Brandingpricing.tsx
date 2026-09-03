@@ -140,9 +140,9 @@ const BrandingPricing: React.FC = () => {
         {/* Header */}
         <div className="flex items-start justify-between">
           <div>
-            <h1 className="text-3xl font-extrabold text-[#0B3D2E] sm:text-4xl">
+            <h2 className="text-3xl font-extrabold text-[#0B3D2E] sm:text-4xl">
               Branding Options <span className="text-[#1E8A3C]">&amp; Pricing</span>
-            </h1>
+            </h2>
             <div className="mt-3 h-1 w-14 rounded-full bg-[#1E8A3C]" />
           </div>
           

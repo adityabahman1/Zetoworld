@@ -148,6 +148,7 @@ export default function Footer() {
               <img
                 src={dark}
                 alt="Zeto"
+                loading="lazy"
                 className="h-14 w-14 object-contain"
               />
               

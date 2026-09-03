@@ -37,6 +37,7 @@ export default function Partners() {
                   key={`${partner.name}-${i}`}
                   src={partner.logo}
                   alt={partner.name}
+                  loading="lazy"
                   className="h-15 w-auto shrink-0 object-contain sm:h-[53px]"
                 />
               ))}

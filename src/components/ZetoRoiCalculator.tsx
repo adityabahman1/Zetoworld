@@ -107,11 +107,11 @@ export default function ZetoRoiCalculator() {
       <div className="max-w-[68rem] mx-auto px-6 md:px-10 py-14 md:py-20 grid md:grid-cols-2 gap-12 md:gap-10 items-center">
         {/* LEFT: headline + image */}
         <div>
-          <h1 className="zeto-display text-4xl md:text-[3.4rem] leading-[1.05] font-bold text-[var(--zeto-ink)]">
+          <h2 className="zeto-display text-4xl md:text-[3.4rem] leading-[1.05] font-bold text-[var(--zeto-ink)]">
             Invest Smart.
             <br />
             <span className="text-[var(--zeto-primary)]">Earn More.</span>
-          </h1>
+          </h2>
           <div className="mt-5 h-1 w-14 rounded-full bg-[var(--zeto-primary)]" />
 
           <div className="relative mt-10">
@@ -122,7 +122,7 @@ export default function ZetoRoiCalculator() {
 
             {/* image placeholder — replace with your own scooter image */}
             <div className="relative mx-auto  w-full max-w-[26rem]  border-[var(--zeto-primary-dim)] bg-white/60 flex flex-col items-center justify-center gap-2 text-[var(--zeto-ink-dim)]">
-              <img src={img} alt="" />
+              <img src={img} alt="" loading="lazy" />
             </div>
 
             {/* floating badges */}

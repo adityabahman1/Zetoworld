@@ -74,6 +74,7 @@ export default function AdShowcase() {
                 <img
                   src={spot.image}
                   alt={spot.title}
+                  loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
 

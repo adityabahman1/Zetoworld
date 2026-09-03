@@ -99,6 +99,7 @@ export default function SwapStation() {
             <img
               src={stationImage}
               alt="Zeto Energy battery swap station with a Zeto scooter parked alongside"
+              loading="lazy"
               className="h-full w-full object-cover"
             />
           </div>

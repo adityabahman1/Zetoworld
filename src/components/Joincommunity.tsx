@@ -31,6 +31,7 @@ export default function JoinCommunity() {
                 key={i}
                 src={src}
                 alt="ZETO rider community"
+                loading="lazy"
                 className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${
                   i === activeIndex ? "opacity-100" : "opacity-0"
                 }`}

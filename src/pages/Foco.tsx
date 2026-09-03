@@ -24,7 +24,7 @@ export function Advertising() {
         <meta property="og:title" content="FOCO Franchise Model | Run a Zeto EV Rental Business" />
         <meta property="og:description" content="Own and operate a Zeto EV Rental Business under the FOCO model — company-operated, franchise-owned." />
         <meta property="og:image" content={`${SITE_URL}${banner}`} />
-        <meta property="og:url" content={`${SITE_URL}/fofo`} />
+        <meta property="og:url" content={`${SITE_URL}/foco`} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
     <div>

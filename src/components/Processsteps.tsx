@@ -37,9 +37,9 @@ export default function ProcessSteps() {
   return (
     <section className=" px-6 py-20">
       <div className="flex items-center justify-center mb-16">
-      <h1 className="text-4xl font-extrabold text-slate-900 sm:text-4xl">
+      <h2 className="text-4xl font-extrabold text-slate-900 sm:text-4xl">
         Get Started. Start Earning.
-      </h1>
+      </h2>
       </div>
       <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-2">
         {/* Image placeholder — swap for a screenshot/mockup of the actual
@@ -49,6 +49,7 @@ export default function ProcessSteps() {
           <img
             src={img1}
             alt="Zeto rider app sign-up and plan selection screens"
+            loading="lazy"
             className=" w-full "
           />
         </div>

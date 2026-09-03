@@ -87,11 +87,11 @@ export default function ZetoBatterySwapStation() {
             </span>
           </div>
 
-          <h1 className="zeto-display text-4xl md:text-6xl leading-[1.05] font-semibold w-full">
+          <h2 className="zeto-display text-4xl md:text-6xl leading-[1.05] font-semibold w-full">
             Charging takes an hour.
             <br />
             <span className="">Swapping takes a stoplight.</span>
-          </h1>
+          </h2>
 
           <p className="mt-6 max-w-3xl text-[15px] md:text-lg leading-relaxed text-[var(--zeto-ink-dim)]">
             Zeto stations let electric two- and three-wheelers trade a

@@ -16,7 +16,7 @@ export function Advertising() {
   return (
     <>
     <Head>
-        <title>Advertise on Zeto Scooters | Brand Visibility Now in Chandigarh, Launching in Mohali, Zirakpur and Panchkula, and coming soon to Ludhiana, Jalandhar and Amritsar. </title>
+        <title>Advertise on Zeto Scooters | Brand Visibility Across Punjab</title>
         <meta name="description" content="Reach riders across Chandigarh and Punjab with branded advertising on Zeto's electric scooter fleet — high visibility, city-wide coverage." />
         <link rel="canonical" href={`${SITE_URL}/advertising`} />
         <meta property="og:title" content="Advertise on Zeto Scooters | Brand Visibility Across Punjab" />

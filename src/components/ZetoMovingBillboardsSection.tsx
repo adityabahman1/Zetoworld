@@ -659,11 +659,13 @@ export default function ZetoMovingBillboardsSection() {
                         <img
                             src={problemImg}
                             alt="The problem with traditional billboards: static, limited locations, high cost, no audience tracking"
+                            loading="lazy"
                             className="zeto-row-img"
                         />
                         <img
                             src={solutionImg}
                             alt="Brand on the move: high visibility, cost-effective, build trust — Zeto scooter ad"
+                            loading="lazy"
                             className="zeto-row-img"
                         />
                     </div>

@@ -63,6 +63,7 @@ export default function SwappableBattery() {
               <img
                 src={batteryImage}
                 alt="Zeto Energy LFP battery, model B699847, rated 51.2V 45Ah 2,304Wh"
+                loading="lazy"
                 className="h-full w-full object-cover"
               />
             </div>
