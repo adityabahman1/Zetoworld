@@ -11,10 +11,13 @@ import {
 
 import dark from "../assets/ChatGPT Image Aug 29, 2026, 01_12_23 PM.png"
 import light from "../assets/ChatGPT Image Aug 29, 2026, 01_10_06 PM.png"
+import fofo from "../assets/ChatGPT Image Sep 3, 2026, 05_02_40 PM.png"
+import foco from "../assets/ChatGPT Image Sep 3, 2026, 05_00_43 PM.png"
 
 interface DropdownChild {
   label: string;
   to: string;
+  image: string;
 }
 
 interface NavLink {
@@ -56,10 +59,12 @@ const NAV_LINKS: NavLink[] = [
       {
         label: "FOCO",
         to: "/foco",
+        image: foco,
       },
       {
         label: "FOFO",
         to: "/fofo",
+        image: fofo,
       },
     ],
   },
@@ -675,18 +680,7 @@ export default function Header({
                   </p>
                 </div>
 
-                <p
-                  className="
-                    mt-2
-                    max-w-[290px]
-                    text-xs
-                    leading-relaxed
-                    text-slate-500
-                  "
-                >
-                  Choose the franchise model
-                  that best fits your business.
-                </p>
+                
               </div>
 
               {/* Options */}
@@ -721,11 +715,11 @@ export default function Header({
                         flex
                         min-h-[145px]
                         flex-col
+                        overflow-hidden
                         rounded-xl
                         border
                         border-slate-200
                         bg-slate-50
-                        p-3
                         transition-all
                         duration-200
                         hover:-translate-y-1
@@ -734,57 +728,19 @@ export default function Header({
                         hover:shadow-lg
                       "
                     >
-                      {/* Model icon */}
+                      {/* Model image */}
 
-                      <div
+                      <img
+                        src={child.image}
+                        alt={child.label}
+                        loading="lazy"
                         className="
-                          flex
-                          h-16
+                          h-full
                           w-full
-                          items-center
-                          justify-center
-                          rounded-lg
-                          bg-[#1FA24A]/10
-                          text-base
-                          font-bold
-                          text-[#1FA24A]
-                          transition-colors
-                          duration-200
-                          group-hover:bg-[#1FA24A]/15
+                          flex-1
+                          object-contain
                         "
-                      >
-                        {child.label}
-                      </div>
-
-                      {/* Model information */}
-
-                      <div className="mt-3">
-                        <p
-                          className="
-                            text-sm
-                            font-bold
-                            text-slate-800
-                            transition-colors
-                            group-hover:text-[#1FA24A]
-                          "
-                        >
-                          {child.label}
-                        </p>
-
-                        <p
-                          className="
-                            mt-1
-                            text-[10px]
-                            leading-[1.4]
-                            text-slate-500
-                          "
-                        >
-                          {child.label ===
-                            "FOCO"
-                            ? "Franchise Owned, Company Operated"
-                            : "Franchise Owned, Franchise Operated"}
-                        </p>
-                      </div>
+                      />
                     </Link>
                   )
                 )}
