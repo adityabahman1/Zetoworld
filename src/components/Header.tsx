@@ -636,7 +636,7 @@ export default function Header({
                 top-full
                 z-[10000]
                 mt-4
-                w-[360px]
+                w-[432px]
                 -translate-x-1/2
                 rounded-2xl
                 border
@@ -713,7 +713,7 @@ export default function Header({
                       className="
                         group
                         flex
-                        min-h-[145px]
+                        min-h-[174px]
                         flex-col
                         overflow-hidden
                         rounded-xl
