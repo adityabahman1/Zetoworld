@@ -159,24 +159,6 @@ export default function HeroCommon({
             {description}
           </p>
 
-          {highlights.length > 0 && (
-            <div className="mt-7 grid grid-cols-3 gap-3 sm:mt-9 sm:flex sm:flex-wrap sm:gap-8 lg:mt-10">
-              {highlights.map((item) => (
-                <div
-                  key={item.label}
-                  className="flex flex-col items-start gap-2 sm:max-w-[110px] sm:gap-3"
-                >
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/25 backdrop-blur-sm sm:h-12 sm:w-12">
-                    <item.icon size={16} className="text-white sm:h-5 sm:w-5" />
-                  </div>
-                  <span className="text-[11px] font-medium leading-tight text-white/90 sm:text-sm">
-                    {item.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
-
           {ctaLabel && ctaHref && (
             <a
               href={ctaHref}
@@ -187,8 +169,71 @@ export default function HeroCommon({
               {ctaLabel}
             </a>
           )}
+
+          {/* MOBILE-ONLY highlights: rendered in normal flow directly under
+              the description/CTA so it's always genuinely close, regardless
+              of screen height. Hidden from sm up — desktop uses the separate
+              block below instead, so this can never affect desktop layout. */}
+          {highlights.length > 0 && (
+            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 sm:hidden">
+              {highlights.map((item) => (
+                <div
+                  key={item.label}
+                  className="flex flex-row items-center gap-2"
+                >
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/25 backdrop-blur-sm">
+                    <item.icon size={14} className="text-white" />
+                  </div>
+                  <div className="whitespace-nowrap text-[10px] font-medium leading-tight text-white/90">
+                    {item.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
+
+      {/* DESKTOP-ONLY highlights: the original standalone, absolutely
+          positioned, bottom-anchored row — completely unchanged from the
+          initial implementation, and deliberately outside the vertically
+          centered `.hc-anim-text` block so it never shifts the title or
+          description on desktop. Hidden below sm; mobile uses the in-flow
+          version above instead. */}
+      {highlights.length > 0 && (
+        <div className="pointer-events-none absolute inset-x-0 bottom-10 z-10 hidden sm:block sm:px-10 lg:px-16 xl:px-20">
+          <div className="hc-anim-text flex flex-nowrap gap-x-12 gap-y-3">
+            {highlights.map((item) => (
+              <div
+                key={item.label}
+                className="flex flex-row items-center gap-3"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/25 backdrop-blur-sm">
+                  <item.icon size={20} className="text-white" />
+                </div>
+                <div className="whitespace-nowrap text-sm font-medium leading-tight text-white/90">
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
+
+/*
+Example usage — note the non-breaking space (\u00A0) between "Fuel" and
+"Cost" so that pair never breaks across two lines on the narrow mobile
+grid, even though "Zero" is free to wrap onto its own line if needed:
+
+<HeroCommon
+  ...
+  highlights={[
+    { icon: Fuel, label: "Zero Fuel\u00A0Cost" },
+    { icon: Leaf, label: "Zero\u00A0Emissions" },
+    { icon: Zap, label: "Fast\u00A0Charging" },
+  ]}
+/>
+*/

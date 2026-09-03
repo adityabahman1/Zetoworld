@@ -960,7 +960,7 @@ export default function Header({
             "
           />
 
-          {/* <span
+          <span
             className={`
               text-4xl
               font-bold
@@ -968,13 +968,13 @@ export default function Header({
               transition-colors
               duration-300
               ${useDarkText
-                ? "text-[#1d7239]"
+                ? "text-[#005C25]"
                 : "text-white drop-shadow-md"
               }
             `}
           >
             zeto
-          </span> */}
+          </span>
         </Link>
 
         {/* =========================================================

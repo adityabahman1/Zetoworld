@@ -7,6 +7,7 @@ import JoinCommunity from "../components/Joincommunity";
 import GetInTouch from "../components/Getintouch";
 import Footer from "../components/Footer";
 import HeroCommon from "../components/HeroCommon";
+import { Fuel, Wrench, Infinity as InfinityIcon } from "lucide-react";
 import Missiondashboard from "../components/Missiondashboard";
 import Cityroute from "../components/Cityroute";
 import { Head } from "vite-react-ssg";
@@ -38,6 +39,11 @@ export default function Home() {
         heroImageAlt="Zeto rider on an electric scooter"
         imagePosition="center"           // desktop stays exactly as it is now
         mobileImagePosition="85% center" // shifts the mobile crop right, toward the rider
+        highlights={[
+          { icon: Fuel, label: "Zero Fuel Cost" },
+          { icon: Wrench, label: "Zero Maintenance" },
+          { icon: InfinityIcon, label: "Unlimited KM's" },
+        ]}
       />
       <WhyChooseZeto />
       <ProcessSteps />
