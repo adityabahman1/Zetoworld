@@ -88,19 +88,32 @@ function FitBounds({ positions }: { positions: [number, number][] }) {
 
       // On desktop (md+) the left portion of the map container sits under
       // the text/timeline scrim (see the gradient overlay in CityRoute.tsx,
-      // opaque up to ~55-68% from the left). Symmetric padding centers the
-      // fitted bounds in the *whole* container, which pushes most pins
-      // under that scrim and leaves the visible right side showing empty
-      // map past the bounds — i.e. the map reads as "bled to the left".
-      // Reserving extra left padding here shifts the fitted content toward
-      // the right, into the unobstructed area, instead.
+      // opaque up to ~55% from the left and not fully clear until ~68%).
+      // Symmetric padding centers the fitted bounds in the *whole*
+      // container, which pushes most pins under that scrim and leaves the
+      // visible right side showing empty map past the bounds — i.e. the
+      // map reads as "bled to the left". Reserving extra left padding here
+      // shifts the fitted content toward the right, into the unobstructed
+      // area, instead.
+      //
+      // The scrim (see CityRoute.tsx) is fully opaque up to 55% of the
+      // container width and only fully transparent by 68% — but pushing the
+      // padding all the way out to 68% forces a much lower (more zoomed
+      // out) fit than the marker cluster actually needs, just to clear a
+      // zone that's already mostly faded out past 55%. Targeting just past
+      // the *fully opaque* 55% mark — with a little headroom for the pin
+      // graphic, which is drawn above its coordinate, not on it — keeps the
+      // westmost pin (Amritsar) clear of the solid part of the scrim while
+      // letting fitBounds pick a noticeably tighter zoom than clearing the
+      // whole fade band would.
       const isDesktop = window.innerWidth >= 768; // matches Tailwind's md breakpoint
-      const leftPad = isDesktop ? Math.min(window.innerWidth * 0.42, 520) : 48;
+      const leftPad = isDesktop ? window.innerWidth * 0.58 + 30 : 48;
+      const topPad = isDesktop ? 80 : 48;
 
       map.fitBounds(bounds, {
-        paddingTopLeft: [leftPad, 48],
+        paddingTopLeft: [leftPad, topPad],
         paddingBottomRight: [48, 48],
-        maxZoom: 10,
+        maxZoom: 12,
       });
     };
 
@@ -122,6 +135,11 @@ function FitBounds({ positions }: { positions: [number, number][] }) {
   return null;
 }
 
+// Roughly India's bounding box (mainland + islands). Used to keep the map
+// framed on India — scrolling/zooming out can't drift into neighboring
+// countries or out to a world view.
+const INDIA_BOUNDS = L.latLngBounds([6.5, 68.0], [37.6, 97.4]);
+
 interface CityRouteMapProps {
   stops: Stop[];
   allPositions: [number, number][];
@@ -132,6 +150,9 @@ export default function CityRouteMap({ stops, allPositions }: CityRouteMapProps)
     <MapContainer
       center={[30.9, 76.0]}
       zoom={8}
+      minZoom={5}
+      maxBounds={INDIA_BOUNDS}
+      maxBoundsViscosity={1.0}
       zoomControl={false}
       scrollWheelZoom={false}
       className="zeto-map h-full w-full"
