@@ -267,7 +267,7 @@ export default function ZetoRoiCalculator() {
             <div className="rounded-2xl bg-[var(--zeto-primary-dim)] p-5">
               <div className="flex items-center gap-2 text-xs font-semibold tracking-wide text-[var(--zeto-primary)]">
                 <TrendingUp size={14} />
-                Estimated returns
+                Fixed returns
               </div>
               <div className="zeto-display text-2xl md:text-3xl font-bold mt-1.5 text-[var(--zeto-primary)]">
                 {formatINR(threeYearReturn)}

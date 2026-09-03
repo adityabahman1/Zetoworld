@@ -90,7 +90,7 @@ export default function ZetoBatterySwapStation() {
           <h1 className="zeto-display text-4xl md:text-6xl leading-[1.05] font-semibold w-full">
             Charging takes an hour.
             <br />
-            <span className="text-[var(--zeto-ink-dim)]">Swapping takes a stoplight.</span>
+            <span className="">Swapping takes a stoplight.</span>
           </h1>
 
           <p className="mt-6 max-w-3xl text-[15px] md:text-lg leading-relaxed text-[var(--zeto-ink-dim)]">

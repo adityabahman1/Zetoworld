@@ -33,7 +33,7 @@ const BENEFITS: Benefit[] = [
   {
     tag: "01",
     icon: Wallet,
-    title: "You keep the full margin",
+    title: "Lets Operate together",
     description:
       "No revenue share for day-to-day operations — what the site earns after costs is yours in full.",
   },
@@ -128,13 +128,10 @@ export default function FofoBenefitCards() {
               sm:text-4xl
             "
           >
-            Built for owners who want the wheel
-          </h2>
+            Built for owners who want the wheel          </h2>
 
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-500">
-            Franchise Owned, Franchise Operated rewards the people who
-            want to run the business themselves — here's what that
-            actually gets you.
+            FOFO is designed for partners who want to own, manage, and grow their ZETO business with greater operational independence.
           </p>
         </div>
 
@@ -306,11 +303,10 @@ export default function FofoBenefitCards() {
               aria-label={`Show card ${index + 1} of ${BENEFITS.length}`}
               aria-current={index === activeIndex}
               onClick={() => scrollToCard(index)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                index === activeIndex
-                  ? "w-6 bg-[#1FA24A]"
-                  : "w-1.5 bg-slate-200"
-              }`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${index === activeIndex
+                ? "w-6 bg-[#1FA24A]"
+                : "w-1.5 bg-slate-200"
+                }`}
             />
           ))}
         </div>

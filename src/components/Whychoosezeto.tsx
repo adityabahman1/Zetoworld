@@ -1,6 +1,6 @@
 import { Leaf, Zap, Wrench, Wallet } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import img1 from "../assets/ChatGPT Image Aug 17, 2026, 11_57_47 AM.png"
+import img1 from "../assets/ChatGPT Image Sep 3, 2026, 12_31_48 PM.png"
 import img2 from "../assets/ChatGPT Image Aug 26, 2026, 11_00_42 AM.png"
 import img3 from "../assets/ChatGPT Image Aug 17, 2026, 12_12_43 PM.png"
 import img4 from "../assets/ChatGPT Image Aug 17, 2026, 12_24_22 PM.png"

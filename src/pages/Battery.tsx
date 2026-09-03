@@ -32,7 +32,7 @@ export function Battery() {
       <Header variant="dark" />
       <HeroCommon
         title="Never Wait to Charge Again"
-        highlight="Swap in 2 Minutes"
+        highlight="Swap in 1 Minutes"
         description="Trade your depleted battery for a fully charged one at any Zeto station, anytime."
         heroImage={banner}
         heroImageAlt="Zeto battery swapping station"
