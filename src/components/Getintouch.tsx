@@ -91,7 +91,7 @@ const CONTACT_DETAILS = [
 ];
 
 const LEAD_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbzZg70GlSt7NdqK3zRY5vw_T7bHElJO5j3NB5yptO7sa1EWVgRnQFoEZpAUGdeJiRVUmg/exec";
+  "https://script.google.com/macros/s/AKfycbz4HXSHpARIeGd9LK7Kn1bfUTgyp5nhqOXylqPk7NzNvjyVeB49sA2uTUnQ-aPgH8wf/exec";
 
 /* -------------------------------------------------------------------------- */
 /* Rider Illustration                                                         */
