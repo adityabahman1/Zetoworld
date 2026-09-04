@@ -54,7 +54,15 @@ const SwapStationFeatures: React.FC = () => {
               background, with a floating glass panel over it instead of a
               separate lime header block. */}
           <div className="relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden min-h-[380px] [&_.leaflet-container]:h-full [&_.leaflet-container]:w-full [&_.leaflet-container]:bg-[#1B1A24]">
-            <div className="absolute inset-0">
+            {/* z-0 (not just `absolute`) is load-bearing here: without an
+                explicit z-index this wrapper never establishes its own
+                stacking context, so Leaflet's internal panes/controls
+                (map-pane is z-index:400, the zoom-control corner is
+                z-index:1000 — see leaflet.css) leak out and render above
+                the z-10 glass panel below instead of being contained
+                beneath it. Same fix already used in Cityroute.tsx's map
+                wrapper (its `md:z-0`). */}
+            <div className="absolute inset-0 z-0">
               <ClientOnly>
                 {() => (
                   <Suspense fallback={<div className="h-full w-full bg-[#1B1A24]" />}>
@@ -64,14 +72,16 @@ const SwapStationFeatures: React.FC = () => {
               </ClientOnly>
             </div>
 
-            {/* frosted-glass info panel, floating over the map */}
-            <div className="pointer-events-none absolute inset-x-5 bottom-5 z-10 rounded-xl border border-white/15 bg-[#1B1A24]/75 px-5 py-4 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-md md:inset-x-6 md:bottom-6">
-              <h3 className="text-[#F5F3ED] text-xl font-bold leading-snug">
+            {/* frosted-glass info panel, floating over the map — narrower
+                side insets (was inset-x-5/6) make it ~10% wider, tighter
+                padding/text/line-spacing make it shorter */}
+            <div className="pointer-events-none absolute inset-x-3 bottom-5 z-10 rounded-xl border border-white/15 bg-[#1B1A24]/75 px-5 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-md md:inset-x-4 md:bottom-6">
+              <h3 className="text-[#F5F3ED] text-lg font-bold leading-tight">
                 30+ Live Stations
                 <br />
                 Across Tricity
               </h3>
-              <p className="mt-1.5 text-[#D9E24E] text-[13px] font-semibold uppercase tracking-wide">
+              <p className="mt-1 text-[#D9E24E] text-[13px] font-semibold uppercase tracking-wide">
                 Growing every day
               </p>
             </div>

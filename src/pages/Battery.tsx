@@ -41,9 +41,9 @@ export function Battery() {
       />
       <ZetoBatterySwapStation/>
       <Swapstation/>
-      <SwappableBattery/>
       <SwapStationJourney/>
       <SwapStationFeatures/>
+       <SwappableBattery/>
       <GetInTouch pageType="battery" />
       <Footer />
     </div>
