@@ -35,7 +35,7 @@ const BENEFITS: Benefit[] = [
     icon: Wallet,
     title: "Lets Operate together",
     description:
-      "No revenue share for day-to-day operations — what the site earns after costs is yours in full.",
+      "Operate with Zeto as your partner. Earn from every delivery through a transparent revenue-sharing model designed for sustainable growth.",
   },
   {
     tag: "02",

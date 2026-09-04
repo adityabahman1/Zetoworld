@@ -1,5 +1,5 @@
 import problemImg from "../assets/ChatGPT Image Sep 2, 2026, 02_55_19 PM.png"
-import solutionImg from "../assets/ChatGPT Image Sep 3, 2026, 01_46_11 PM.png"
+import solutionImg from "../assets/ChatGPT Image Sep 4, 2026, 11_39_28 AM.png"
 
 type IconProps = {
     size?: number;
