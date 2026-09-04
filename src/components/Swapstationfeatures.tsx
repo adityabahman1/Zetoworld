@@ -1,37 +1,14 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
+import { ClientOnly } from "vite-react-ssg";
+
+// Loaded lazily (dynamic import) so this chunk — and the `leaflet` /
+// `react-leaflet` imports inside it — is never evaluated during the
+// vite-react-ssg server build. Combined with <ClientOnly> below, it's only
+// fetched and rendered once this component has actually mounted in a real
+// browser. Same split used by Cityroute.tsx / Cityroutemap.tsx.
+const SwapStationsMap = lazy(() => import("./SwapStationsMap"));
 
 /* ---------- inline illustrations ---------- */
-
-const ClockIllustration = () => (
-  <svg viewBox="0 0 200 200" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="100" cy="105" r="70" fill="none" stroke="#48465C" strokeWidth="10" />
-    <path
-      d="M100 35a70 70 0 0 1 0 140 70 70 0 0 1-52-23"
-      fill="none"
-      stroke="#D9E24E"
-      strokeWidth="10"
-      strokeLinecap="round"
-    />
-    <line x1="100" y1="105" x2="100" y2="60" stroke="#F5F3ED" strokeWidth="6" strokeLinecap="round" />
-    <line x1="100" y1="105" x2="70" y2="132" stroke="#F5F3ED" strokeWidth="6" strokeLinecap="round" />
-    <circle cx="100" cy="105" r="6" fill="#D9E24E" />
-    <rect x="88" y="18" width="24" height="10" rx="5" fill="#48465C" />
-  </svg>
-);
-
-const PinBatteryIllustration = () => (
-  <svg viewBox="0 0 200 200" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="100" cy="178" rx="46" ry="8" fill="#00000022" />
-    <path
-      d="M100 20c-38 0-62 28-62 62 0 46 62 96 62 96s62-50 62-96c0-34-24-62-62-62z"
-      fill="#2E2C3C"
-    />
-    <rect x="66" y="70" width="68" height="56" rx="8" fill="#F5F3ED" />
-    <rect x="90" y="60" width="20" height="12" rx="3" fill="#F5F3ED" />
-    <rect x="74" y="80" width="52" height="36" rx="3" fill="#2E2C3C" />
-    <path d="M104 84l-18 20h12l-4 16 18-22h-12l4-14z" fill="#D9E24E" />
-  </svg>
-);
 
 const PhoneIllustration = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -63,37 +40,40 @@ const ShieldIllustration = () => (
 const SwapStationFeatures: React.FC = () => {
   return (
     <section className="w-full  py-16 px-6">
+      <style>{`
+        .zeto-stations-map .leaflet-popup-content-wrapper { border-radius: 10px; }
+        .zeto-stations-map .leaflet-popup-content { margin: 6px 10px; font-size: 12px; font-weight: 600; color: #1B1A24; }
+        .zeto-stations-map .leaflet-control-attribution { font-size: 8px; background: rgba(255,255,255,0.75); }
+      `}</style>
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[minmax(0,1fr)]">
           {/* Swap in Seconds — dark purple, tall */}
-          <div className="md:row-span-2 rounded-2xl bg-[#514E68] p-8 flex flex-col justify-between min-h-[380px]">
-            <div>
-              <h3 className="text-[#F5F3ED] text-3xl font-bold leading-snug">
-                Lightning-Fast Swaps
-              </h3>
-              <p className="mt-3 text-[#C9C6D6] text-[14.5px] leading-relaxed">
-                No waiting, no downtime.
-                <br />
-                Just swap and go.
-              </p>
-            </div>
-            <div className="mt-8 w-44 h-44 mx-auto">
-              <ClockIllustration />
-            </div>
-          </div>
+          
 
-          {/* Network Everywhere — lime, tall */}
-          <div className="md:row-span-2 rounded-2xl bg-[#D9E24E] p-8 flex flex-col justify-between min-h-[380px]">
-            <div>
-              <h3 className="text-[#1B1A24] text-2xl font-bold leading-snug">
-                Stations at Every Corner
-              </h3>
-              <p className="mt-3 text-[#3A3826] text-[14.5px] leading-relaxed">
-                Accessible, convenient, and growing every day.
-              </p>
+          {/* Network Everywhere — the map itself is the card's full
+              background, with a floating glass panel over it instead of a
+              separate lime header block. */}
+          <div className="relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden min-h-[380px] [&_.leaflet-container]:h-full [&_.leaflet-container]:w-full [&_.leaflet-container]:bg-[#1B1A24]">
+            <div className="absolute inset-0">
+              <ClientOnly>
+                {() => (
+                  <Suspense fallback={<div className="h-full w-full bg-[#1B1A24]" />}>
+                    <SwapStationsMap />
+                  </Suspense>
+                )}
+              </ClientOnly>
             </div>
-            <div className="mt-8 w-40 h-40 mx-auto">
-              <PinBatteryIllustration />
+
+            {/* frosted-glass info panel, floating over the map */}
+            <div className="pointer-events-none absolute inset-x-5 bottom-5 z-10 rounded-xl border border-white/15 bg-[#1B1A24]/75 px-5 py-4 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-md md:inset-x-6 md:bottom-6">
+              <h3 className="text-[#F5F3ED] text-xl font-bold leading-snug">
+                30+ Live Stations
+                <br />
+                Across Tricity
+              </h3>
+              <p className="mt-1.5 text-[#D9E24E] text-[13px] font-semibold uppercase tracking-wide">
+                Growing every day
+              </p>
             </div>
           </div>
 
