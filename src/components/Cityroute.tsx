@@ -36,17 +36,16 @@ interface CityRouteProps {
 const defaultStops: Stop[] = [
     {
         tag: "Live now",
-        cities: "Chandigarh",
+        cities: "Chandigarh & Zirakpur",
         description: "500+ scooters running across the city — our home base and proving ground.",
-        locations: [{ name: "Chandigarh", lat: 30.7333, lng: 76.7794 }],
+        locations: [{ name: "Chandigarh", lat: 30.7333, lng: 76.7794 }, { name: "Zirakpur", lat: 30.6425, lng: 76.8173 }],
     },
     {
         tag: "Launching now",
-        cities: "Mohali, Zirakpur & Panchkula",
+        cities: "Mohali & Panchkula",
         description: "The next three cities in the Chandigarh Tricity area, building out from our existing swap network.",
         locations: [
             { name: "Mohali", lat: 30.7046, lng: 76.7179 },
-            { name: "Zirakpur", lat: 30.6425, lng: 76.8173 },
             { name: "Panchkula", lat: 30.6942, lng: 76.8606 },
         ],
     },
