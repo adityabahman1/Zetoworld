@@ -29,7 +29,7 @@ export function Fofo() {
     <div>
       <Header variant="dark" />
       <HeroCommon
-        title="Your City,Your Buisness "
+        title="Your City,Your Business "
         highlight=" Zeto Will Help"
         description="Partner with ZETO through the FOFO model — you own and operate the business, Zeto equips you with playbook, training, and brand behind it."
         heroImage={banner}
